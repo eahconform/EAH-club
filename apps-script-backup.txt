@@ -1,0 +1,1447 @@
+/**************************************************************
+ * EAH BOUTIQUE - PROGRAMME CLUB NFC
+ * Version GitHub Pages + Google Apps Script + Google Sheets
+ *
+ * IMPORTANT :
+ * Ce projet Apps Script est AUTONOME.
+ * Il crée lui-même le Google Sheet.
+ **************************************************************/
+
+const EAH = {
+  SPREADSHEET_NAME: "EAH Boutique - Club NFC",
+  CARD_COUNT: 100,
+
+  // Tu modifieras cette URL une fois ton GitHub Pages créé.
+  DEFAULT_SITE_URL: "https://TON-COMPTE.github.io/eah-boutique/"
+};
+
+
+/* ============================================================
+   1. INSTALLATION AUTOMATIQUE
+============================================================ */
+
+function setupEAH() {
+
+  // Création du Google Sheet
+  const ss = SpreadsheetApp.create(EAH.SPREADSHEET_NAME);
+
+  PropertiesService
+    .getScriptProperties()
+    .setProperty("SPREADSHEET_ID", ss.getId());
+
+  /* ===================== CARTES ===================== */
+
+  const cartes = ss.getSheets()[0];
+  cartes.setName("CARTES");
+  cartes.clear();
+
+  cartes.getRange(1, 1, 1, 8).setValues([[
+    "NUMERO",
+    "TOKEN",
+    "PRENOM",
+    "ANNIVERSAIRE",
+    "ACTIVE",
+    "DATE_ACTIVATION",
+    "URL_NFC",
+    "DERNIERE_UTILISATION"
+  ]]);
+
+  const cardsData = [];
+
+  for (let i = 1; i <= EAH.CARD_COUNT; i++) {
+
+    const numero = String(i).padStart(3, "0");
+
+    const token = generateToken_();
+
+    const url =
+      EAH.DEFAULT_SITE_URL +
+      "?card=" +
+      encodeURIComponent(token);
+
+    cardsData.push([
+      numero,
+      token,
+      "",
+      "",
+      false,
+      "",
+      url,
+      ""
+    ]);
+  }
+
+  cartes
+    .getRange(2, 1, cardsData.length, 8)
+    .setValues(cardsData);
+
+  cartes
+    .getRange(2, 5, EAH.CARD_COUNT, 1)
+    .insertCheckboxes();
+
+  styleSheet_(cartes);
+
+
+  /* ===================== PARAMETRES ===================== */
+
+  const params = ss.insertSheet("PARAMETRES");
+
+  params.getRange(1, 1, 1, 2).setValues([[
+    "PARAMETRE",
+    "VALEUR"
+  ]]);
+
+  params.getRange(2, 1, 14, 2).setValues([
+
+    ["BOUTIQUE_NOM", "EAH Boutique de prêt à porter"],
+
+    [
+      "SLOGAN",
+      "Mode • Élégance • Expérience"
+    ],
+
+    [
+      "TELEPHONE",
+      "06 00 00 00 00"
+    ],
+
+    [
+      "ADRESSE",
+      "Lyon, France"
+    ],
+
+    [
+      "HORAIRES",
+      "Lundi - Samedi : 10h00 - 19h00"
+    ],
+
+    [
+      "INSTAGRAM",
+      "https://instagram.com/"
+    ],
+
+    [
+      "FACEBOOK",
+      "https://facebook.com/"
+    ],
+
+    [
+      "TIKTOK",
+      "https://tiktok.com/"
+    ],
+
+    [
+      "GOOGLE_AVIS",
+      "https://google.com/"
+    ],
+
+    [
+      "OFFRE_MEMBRE",
+      "-10 % sur une sélection d'articles Club"
+    ],
+
+    [
+      "OFFRE_ANNIVERSAIRE",
+      "-15 % sur un article pendant votre mois anniversaire"
+    ],
+
+    [
+      "SITE_URL",
+      EAH.DEFAULT_SITE_URL
+    ],
+
+    [
+      "HERO_TITRE",
+      "L'élégance réservée à nos membres"
+    ],
+
+    [
+      "HERO_TEXTE",
+      "Découvrez nos nouveautés, nos pièces phares et les avantages exclusifs EAH Club."
+    ]
+
+  ]);
+
+  styleSheet_(params);
+
+
+  /* ===================== ARTICLES ===================== */
+
+  const articles = ss.insertSheet("ARTICLES");
+
+  articles.getRange(1, 1, 1, 9).setValues([[
+    "ID",
+    "NOM",
+    "CATEGORIE",
+    "PRIX",
+    "DESCRIPTION",
+    "TAILLES",
+    "IMAGE",
+    "BADGE",
+    "ACTIF"
+  ]]);
+
+  const products = [
+
+    [
+      "P001",
+      "Blazer Signature",
+      "Vestes",
+      "129,90 €",
+      "Blazer premium à la coupe élégante et contemporaine.",
+      "XS|S|M|L|XL",
+      "assets/produit-01.webp",
+      "Nouveauté",
+      true
+    ],
+
+    [
+      "P002",
+      "Robe Élégance",
+      "Robes",
+      "89,90 €",
+      "Robe raffinée pensée pour une silhouette moderne.",
+      "XS|S|M|L",
+      "assets/produit-02.webp",
+      "Best-seller",
+      true
+    ],
+
+    [
+      "P003",
+      "Chemise Prestige",
+      "Chemises",
+      "59,90 €",
+      "Chemise premium au toucher doux et à la coupe structurée.",
+      "S|M|L|XL",
+      "assets/produit-03.webp",
+      "Collection",
+      true
+    ],
+
+    [
+      "P004",
+      "Jean Atelier",
+      "Jeans",
+      "79,90 €",
+      "Jean moderne avec une coupe confortable et élégante.",
+      "36|38|40|42|44",
+      "assets/produit-04.webp",
+      "Nouveauté",
+      true
+    ],
+
+    [
+      "P005",
+      "Veste Milano",
+      "Vestes",
+      "149,90 €",
+      "Une pièce forte inspirée du tailoring italien.",
+      "S|M|L|XL",
+      "assets/produit-05.webp",
+      "Premium",
+      true
+    ],
+
+    [
+      "P006",
+      "Pull Cashmere Touch",
+      "Pulls",
+      "69,90 €",
+      "Pull doux à l'allure minimaliste et sophistiquée.",
+      "XS|S|M|L|XL",
+      "assets/produit-06.webp",
+      "Club",
+      true
+    ],
+
+    [
+      "P007",
+      "Pantalon Riviera",
+      "Pantalons",
+      "74,90 €",
+      "Pantalon élégant adapté au quotidien comme aux occasions.",
+      "36|38|40|42|44",
+      "assets/produit-07.webp",
+      "Sélection",
+      true
+    ],
+
+    [
+      "P008",
+      "Sac Icon",
+      "Accessoires",
+      "99,90 €",
+      "Sac structuré avec détails premium.",
+      "Unique",
+      "assets/produit-08.webp",
+      "Iconique",
+      true
+    ],
+
+    [
+      "P009",
+      "Sneakers Gold Edition",
+      "Chaussures",
+      "119,90 €",
+      "Sneakers contemporaines avec détails élégants.",
+      "36|37|38|39|40|41|42|43",
+      "assets/produit-09.webp",
+      "Exclusive",
+      true
+    ],
+
+    [
+      "P010",
+      "Manteau Paris",
+      "Manteaux",
+      "189,90 €",
+      "Manteau long premium à la coupe intemporelle.",
+      "XS|S|M|L|XL",
+      "assets/produit-10.webp",
+      "Premium",
+      true
+    ]
+
+  ];
+
+  articles
+    .getRange(2, 1, products.length, 9)
+    .setValues(products);
+
+  articles
+    .getRange(2, 9, products.length, 1)
+    .insertCheckboxes();
+
+  articles
+    .getRange(2, 9, products.length, 1)
+    .setValue(true);
+
+  styleSheet_(articles);
+
+
+  /* ===================== OFFRES ===================== */
+
+  const offres = ss.insertSheet("OFFRES");
+
+  offres.getRange(1, 1, 1, 5).setValues([[
+    "CODE",
+    "TITRE",
+    "DESCRIPTION",
+    "TYPE",
+    "ACTIF"
+  ]]);
+
+  offres.getRange(2, 1, 2, 5).setValues([
+
+    [
+      "MEMBRE",
+      "Avantage Club",
+      "-10 % sur une sélection d'articles Club",
+      "MEMBRE",
+      true
+    ],
+
+    [
+      "ANNIVERSAIRE",
+      "Votre cadeau anniversaire",
+      "-15 % sur un article pendant votre mois anniversaire",
+      "ANNIVERSAIRE",
+      true
+    ]
+
+  ]);
+
+  offres
+    .getRange(2, 5, 2, 1)
+    .insertCheckboxes();
+
+  offres
+    .getRange(2, 5, 2, 1)
+    .setValue(true);
+
+  styleSheet_(offres);
+
+
+  /* ===================== RESERVATIONS ===================== */
+
+  const reservations = ss.insertSheet("RESERVATIONS");
+
+  reservations.getRange(1, 1, 1, 13).setValues([[
+    "ID",
+    "DATE",
+    "EXPIRE_LE",
+    "STATUT",
+    "PRODUIT_ID",
+    "PRODUIT",
+    "TAILLE",
+    "PRENOM",
+    "NOM",
+    "TELEPHONE",
+    "NUMERO_CARTE",
+    "TOKEN",
+    "COMMENTAIRE"
+  ]]);
+
+  styleSheet_(reservations);
+
+
+  console.log("==========================================");
+  console.log("EAH BOUTIQUE INSTALLÉ");
+  console.log("Google Sheet :");
+  console.log(ss.getUrl());
+  console.log("==========================================");
+
+  return ss.getUrl();
+}
+
+
+/* ============================================================
+   2. CHANGER L'URL GITHUB
+============================================================ */
+
+function updateSiteUrl(newUrl) {
+
+  if (!newUrl) {
+    throw new Error("URL obligatoire");
+  }
+
+  if (!newUrl.endsWith("/")) {
+    newUrl += "/";
+  }
+
+  const ss = getSpreadsheet_();
+
+  const paramSheet =
+    ss.getSheetByName("PARAMETRES");
+
+  const values =
+    paramSheet
+      .getDataRange()
+      .getValues();
+
+  for (let i = 1; i < values.length; i++) {
+
+    if (values[i][0] === "SITE_URL") {
+
+      paramSheet
+        .getRange(i + 1, 2)
+        .setValue(newUrl);
+    }
+  }
+
+  const cartes =
+    ss.getSheetByName("CARTES");
+
+  const data =
+    cartes
+      .getRange(2, 1, cartes.getLastRow() - 1, 8)
+      .getValues();
+
+  for (let i = 0; i < data.length; i++) {
+
+    const token = data[i][1];
+
+    cartes
+      .getRange(i + 2, 7)
+      .setValue(
+        newUrl +
+        "?card=" +
+        encodeURIComponent(token)
+      );
+  }
+
+  return "URL mise à jour : " + newUrl;
+}
+
+
+/* ============================================================
+   3. API WEB
+============================================================ */
+
+function doGet(e) {
+
+  try {
+
+    const action =
+      String(e.parameter.action || "bootstrap");
+
+    let result;
+
+    switch (action) {
+
+      case "bootstrap":
+
+        result =
+          getBootstrap_(
+            e.parameter.card || ""
+          );
+
+        break;
+
+
+      case "card":
+
+        result =
+          getCard_(
+            e.parameter.card || ""
+          );
+
+        break;
+
+
+      case "reservationStatus":
+
+        result =
+          getReservationStatus_(
+            e.parameter.id || ""
+          );
+
+        break;
+
+
+      case "health":
+
+        result = {
+          ok: true,
+          message: "EAH API opérationnelle"
+        };
+
+        break;
+
+
+      default:
+
+        result = {
+          ok: false,
+          error: "Action inconnue"
+        };
+
+    }
+
+    return jsonOutput_(
+      result,
+      e.parameter.callback
+    );
+
+  }
+
+  catch (err) {
+
+    return jsonOutput_({
+      ok: false,
+      error: err.message
+    }, e.parameter.callback);
+
+  }
+}
+
+
+/* ============================================================
+   4. POST - ACTIVATION + RESERVATION
+============================================================ */
+
+function doPost(e) {
+
+  try {
+
+    const action =
+      String(e.parameter.action || "");
+
+    let result;
+
+    if (action === "activate") {
+
+      result =
+        activateCard_(
+          e.parameter.card,
+          e.parameter.prenom,
+          e.parameter.anniversaire,
+          e.parameter.consentement
+        );
+
+    }
+
+    else if (action === "reserve") {
+
+      result =
+        createReservation_({
+          requestId: e.parameter.requestId,
+          card: e.parameter.card,
+          produitId: e.parameter.produitId,
+          taille: e.parameter.taille,
+          prenom: e.parameter.prenom,
+          nom: e.parameter.nom,
+          telephone: e.parameter.telephone,
+          consentement: e.parameter.consentement
+        });
+
+    }
+
+    else {
+
+      result = {
+        ok: false,
+        error: "Action inconnue"
+      };
+
+    }
+
+    return HtmlService
+      .createHtmlOutput(
+        "<html><body>OK</body></html>"
+      );
+
+  }
+
+  catch (err) {
+
+    return HtmlService
+      .createHtmlOutput(
+        "<html><body>ERREUR</body></html>"
+      );
+
+  }
+}
+
+
+/* ============================================================
+   5. ACTIVATION CARTE
+============================================================ */
+
+function activateCard_(
+  token,
+  prenom,
+  anniversaire,
+  consentement
+) {
+
+  token =
+    String(token || "").trim();
+
+  prenom =
+    String(prenom || "").trim();
+
+  anniversaire =
+    String(anniversaire || "").trim();
+
+  if (!token) {
+    throw new Error("Carte invalide");
+  }
+
+  if (
+    prenom.length < 2 ||
+    prenom.length > 40
+  ) {
+    throw new Error("Prénom invalide");
+  }
+
+  if (
+    !/^(0?[1-9]|[12]\d|3[01])\/(0?[1-9]|1[0-2])$/
+      .test(anniversaire)
+  ) {
+    throw new Error(
+      "Anniversaire au format JJ/MM"
+    );
+  }
+
+  if (consentement !== "true") {
+    throw new Error(
+      "Consentement obligatoire"
+    );
+  }
+
+  const lock =
+    LockService.getScriptLock();
+
+  lock.waitLock(10000);
+
+  try {
+
+    const ss =
+      getSpreadsheet_();
+
+    const sheet =
+      ss.getSheetByName("CARTES");
+
+    const data =
+      sheet
+        .getRange(
+          2,
+          1,
+          sheet.getLastRow() - 1,
+          8
+        )
+        .getValues();
+
+    for (let i = 0; i < data.length; i++) {
+
+      if (
+        String(data[i][1]) === token
+      ) {
+
+        const row = i + 2;
+
+        const alreadyActive =
+          data[i][4] === true;
+
+        if (alreadyActive) {
+
+          return {
+            ok: true,
+            alreadyActive: true
+          };
+
+        }
+
+        sheet
+          .getRange(row, 3)
+          .setValue(prenom);
+
+        sheet
+          .getRange(row, 4)
+          .setValue(anniversaire);
+
+        sheet
+          .getRange(row, 5)
+          .setValue(true);
+
+        sheet
+          .getRange(row, 6)
+          .setValue(new Date());
+
+        return {
+          ok: true,
+          activated: true
+        };
+      }
+    }
+
+    throw new Error(
+      "Carte inconnue"
+    );
+
+  }
+
+  finally {
+    lock.releaseLock();
+  }
+}
+
+
+/* ============================================================
+   6. INFORMATIONS CARTE
+============================================================ */
+
+function getCard_(token) {
+
+  token =
+    String(token || "").trim();
+
+  if (!token) {
+
+    return {
+      ok: true,
+      exists: false,
+      active: false
+    };
+  }
+
+  const ss =
+    getSpreadsheet_();
+
+  const sheet =
+    ss.getSheetByName("CARTES");
+
+  const data =
+    sheet
+      .getRange(
+        2,
+        1,
+        sheet.getLastRow() - 1,
+        8
+      )
+      .getValues();
+
+  for (let i = 0; i < data.length; i++) {
+
+    if (
+      String(data[i][1]) === token
+    ) {
+
+      const row = i + 2;
+
+      sheet
+        .getRange(row, 8)
+        .setValue(new Date());
+
+      const active =
+        data[i][4] === true;
+
+      if (!active) {
+
+        return {
+          ok: true,
+          exists: true,
+          active: false,
+          numero: data[i][0]
+        };
+      }
+
+      return {
+
+        ok: true,
+
+        exists: true,
+
+        active: true,
+
+        numero:
+          data[i][0],
+
+        prenom:
+          data[i][2],
+
+        anniversaire:
+          data[i][3],
+
+        birthdayMonth:
+          isBirthdayMonth_(
+            data[i][3]
+          )
+      };
+    }
+  }
+
+  return {
+    ok: true,
+    exists: false,
+    active: false
+  };
+}
+
+
+/* ============================================================
+   7. RESERVATION 24H
+============================================================ */
+
+function createReservation_(data) {
+
+  if (
+    String(data.consentement) !== "true"
+  ) {
+    throw new Error(
+      "Consentement obligatoire"
+    );
+  }
+
+  const produit =
+    getProductById_(
+      data.produitId
+    );
+
+  if (!produit) {
+    throw new Error(
+      "Produit inconnu"
+    );
+  }
+
+  const prenom =
+    String(data.prenom || "").trim();
+
+  const nom =
+    String(data.nom || "").trim();
+
+  const telephone =
+    String(data.telephone || "").trim();
+
+  const taille =
+    String(data.taille || "").trim();
+
+  if (!prenom || !nom) {
+    throw new Error(
+      "Nom et prénom obligatoires"
+    );
+  }
+
+  if (telephone.length < 8) {
+    throw new Error(
+      "Téléphone invalide"
+    );
+  }
+
+  const now =
+    new Date();
+
+  const expiry =
+    new Date(
+      now.getTime() +
+      24 * 60 * 60 * 1000
+    );
+
+  const requestId =
+    String(
+      data.requestId ||
+      Utilities.getUuid()
+    );
+
+  let numeroCarte = "";
+
+  if (data.card) {
+
+    const card =
+      getCard_(
+        data.card
+      );
+
+    if (card.exists) {
+      numeroCarte =
+        card.numero || "";
+    }
+  }
+
+  const ss =
+    getSpreadsheet_();
+
+  const sheet =
+    ss.getSheetByName(
+      "RESERVATIONS"
+    );
+
+  sheet.appendRow([
+
+    requestId,
+
+    now,
+
+    expiry,
+
+    "À CONFIRMER",
+
+    produit.id,
+
+    produit.nom,
+
+    taille,
+
+    prenom,
+
+    nom,
+
+    telephone,
+
+    numeroCarte,
+
+    data.card || "",
+
+    "Réservation web 24h"
+
+  ]);
+
+  return {
+    ok: true,
+    id: requestId
+  };
+}
+
+
+/* ============================================================
+   8. STATUT RESERVATION
+============================================================ */
+
+function getReservationStatus_(id) {
+
+  if (!id) {
+    return {
+      ok: false
+    };
+  }
+
+  const ss =
+    getSpreadsheet_();
+
+  const sheet =
+    ss.getSheetByName(
+      "RESERVATIONS"
+    );
+
+  if (sheet.getLastRow() < 2) {
+
+    return {
+      ok: true,
+      found: false
+    };
+  }
+
+  const data =
+    sheet
+      .getRange(
+        2,
+        1,
+        sheet.getLastRow() - 1,
+        13
+      )
+      .getValues();
+
+  for (let i = 0; i < data.length; i++) {
+
+    if (
+      String(data[i][0]) === String(id)
+    ) {
+
+      return {
+        ok: true,
+        found: true,
+        status: data[i][3],
+        expires: data[i][2]
+      };
+    }
+  }
+
+  return {
+    ok: true,
+    found: false
+  };
+}
+
+
+/* ============================================================
+   9. BOOTSTRAP SITE
+============================================================ */
+
+function getBootstrap_(token) {
+
+  return {
+
+    ok: true,
+
+    shop:
+      getParameters_(),
+
+    products:
+      getProducts_(),
+
+    offers:
+      getOffers_(),
+
+    card:
+      getCard_(token)
+
+  };
+}
+
+
+/* ============================================================
+   10. PRODUITS
+============================================================ */
+
+function getProducts_() {
+
+  const ss =
+    getSpreadsheet_();
+
+  const sheet =
+    ss.getSheetByName(
+      "ARTICLES"
+    );
+
+  const data =
+    sheet
+      .getRange(
+        2,
+        1,
+        sheet.getLastRow() - 1,
+        9
+      )
+      .getValues();
+
+  return data
+    .filter(row => row[8] === true)
+    .map(row => ({
+
+      id: row[0],
+
+      nom: row[1],
+
+      categorie: row[2],
+
+      prix: row[3],
+
+      description: row[4],
+
+      tailles:
+        String(row[5])
+          .split("|"),
+
+      image: row[6],
+
+      badge: row[7]
+
+    }));
+}
+
+
+function getProductById_(id) {
+
+  const products =
+    getProducts_();
+
+  return products.find(
+    p =>
+      String(p.id) ===
+      String(id)
+  );
+}
+
+
+/* ============================================================
+   11. OFFRES
+============================================================ */
+
+function getOffers_() {
+
+  const ss =
+    getSpreadsheet_();
+
+  const sheet =
+    ss.getSheetByName(
+      "OFFRES"
+    );
+
+  const data =
+    sheet
+      .getRange(
+        2,
+        1,
+        sheet.getLastRow() - 1,
+        5
+      )
+      .getValues();
+
+  return data
+    .filter(row => row[4] === true)
+    .map(row => ({
+
+      code: row[0],
+
+      titre: row[1],
+
+      description: row[2],
+
+      type: row[3]
+
+    }));
+}
+
+
+/* ============================================================
+   12. PARAMETRES
+============================================================ */
+
+function getParameters_() {
+
+  const ss =
+    getSpreadsheet_();
+
+  const sheet =
+    ss.getSheetByName(
+      "PARAMETRES"
+    );
+
+  const data =
+    sheet
+      .getRange(
+        2,
+        1,
+        sheet.getLastRow() - 1,
+        2
+      )
+      .getValues();
+
+  const obj = {};
+
+  data.forEach(row => {
+
+    obj[
+      String(row[0])
+    ] = row[1];
+
+  });
+
+  return obj;
+}
+
+
+/* ============================================================
+   13. OUTILS
+============================================================ */
+
+function getSpreadsheet_() {
+
+  const id =
+    PropertiesService
+      .getScriptProperties()
+      .getProperty(
+        "SPREADSHEET_ID"
+      );
+
+  if (!id) {
+
+    throw new Error(
+      "Exécute setupEAH() avant de déployer l'application."
+    );
+  }
+
+  return SpreadsheetApp
+    .openById(id);
+}
+
+
+function generateToken_() {
+
+  return Utilities
+    .getUuid()
+    .replace(/-/g, "")
+    .substring(0, 18)
+    .toUpperCase();
+}
+
+
+function isBirthdayMonth_(birthday) {
+
+  const parts =
+    String(birthday || "")
+      .split("/");
+
+  if (parts.length !== 2) {
+    return false;
+  }
+
+  const month =
+    Number(parts[1]);
+
+  return (
+    month ===
+    new Date().getMonth() + 1
+  );
+}
+
+
+function jsonOutput_(
+  object,
+  callback
+) {
+
+  const json =
+    JSON.stringify(object);
+
+  if (callback) {
+
+    const cb =
+      String(callback)
+        .replace(
+          /[^a-zA-Z0-9_$\.]/g,
+          ""
+        );
+
+    return ContentService
+      .createTextOutput(
+        cb +
+        "(" +
+        json +
+        ");"
+      )
+      .setMimeType(
+        ContentService
+          .MimeType
+          .JAVASCRIPT
+      );
+  }
+
+  return ContentService
+    .createTextOutput(json)
+    .setMimeType(
+      ContentService
+        .MimeType
+        .JSON
+    );
+}
+
+
+function styleSheet_(sheet) {
+
+  const lastColumn =
+    sheet.getLastColumn();
+
+  sheet
+    .getRange(
+      1,
+      1,
+      1,
+      lastColumn
+    )
+    .setBackground("#111111")
+    .setFontColor("#D4AF37")
+    .setFontWeight("bold");
+
+  sheet.setFrozenRows(1);
+
+  sheet.autoResizeColumns(
+    1,
+    lastColumn
+  );
+}function configurerMonSite() {
+
+  updateSiteUrl(
+    "https://eahconform.github.io/EAH-club/"
+  );
+
+}function ajouterCartes(nombre) {
+
+  const ss = getSpreadsheet_();
+  const sheet = ss.getSheetByName("CARTES");
+
+  if (!sheet) {
+    throw new Error("L'onglet CARTES est introuvable.");
+  }
+
+  nombre = Number(nombre);
+
+  if (!nombre || nombre < 1) {
+    throw new Error("Nombre de cartes invalide.");
+  }
+
+  // Récupération de l'URL actuelle du site
+  const params = getParameters_();
+
+  let siteUrl = String(params.SITE_URL || "").trim();
+
+  if (!siteUrl) {
+    throw new Error("SITE_URL n'est pas renseignée dans PARAMETRES.");
+  }
+
+  if (!siteUrl.endsWith("/")) {
+    siteUrl += "/";
+  }
+
+  // Lecture des cartes existantes
+  const lastRow = sheet.getLastRow();
+
+  let existingData = [];
+
+  if (lastRow >= 2) {
+    existingData = sheet
+      .getRange(2, 1, lastRow - 1, 8)
+      .getValues();
+  }
+
+  // Trouver le plus grand numéro déjà utilisé
+  let maxNumero = 0;
+
+  const tokensExistants = new Set();
+
+  existingData.forEach(row => {
+
+    const numero = Number(row[0]);
+
+    if (!isNaN(numero)) {
+      maxNumero = Math.max(maxNumero, numero);
+    }
+
+    if (row[1]) {
+      tokensExistants.add(String(row[1]));
+    }
+
+  });
+
+  const nouvellesCartes = [];
+
+  for (let i = 1; i <= nombre; i++) {
+
+    const numero = maxNumero + i;
+
+    let token;
+
+    // Sécurité contre un doublon extrêmement improbable
+    do {
+      token = generateToken_();
+    } while (tokensExistants.has(token));
+
+    tokensExistants.add(token);
+
+    const url =
+      siteUrl +
+      "?card=" +
+      encodeURIComponent(token);
+
+    nouvellesCartes.push([
+      numero,     // NUMERO
+      token,      // TOKEN
+      "",         // PRENOM
+      "",         // ANNIVERSAIRE
+      false,      // ACTIVE
+      "",         // DATE_ACTIVATION
+      url,        // URL_NFC
+      ""          // DERNIERE_UTILISATION
+    ]);
+  }
+
+  const premiereNouvelleLigne = sheet.getLastRow() + 1;
+
+  sheet
+    .getRange(
+      premiereNouvelleLigne,
+      1,
+      nouvellesCartes.length,
+      8
+    )
+    .setValues(nouvellesCartes);
+
+  // Cases à cocher dans ACTIVE
+  sheet
+    .getRange(
+      premiereNouvelleLigne,
+      5,
+      nouvellesCartes.length,
+      1
+    )
+    .insertCheckboxes();
+
+  // Ajustement visuel
+  sheet.autoResizeColumns(1, 8);
+
+  console.log(
+    nombre +
+    " cartes ajoutées. Numéros " +
+    (maxNumero + 1) +
+    " à " +
+    (maxNumero + nombre)
+  );
+
+  return {
+    ok: true,
+    ajout: nombre,
+    debut: maxNumero + 1,
+    fin: maxNumero + nombre
+  };
+}
+
+
+/*
+ * Fonction pratique pour ajouter directement 100 cartes
+ */
+function ajouter100Cartes() {
+
+  return ajouterCartes(100);
+
+}
+
+
+/*
+ * Si un jour tu veux seulement 50 cartes
+ */
+function ajouter50Cartes() {
+
+  return ajouterCartes(50);
+
+}
