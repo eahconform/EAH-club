@@ -1546,7 +1546,20 @@ Téléphone
 >
 
 </div>
+<div class="form-field">
 
+<label>
+E-mail
+</label>
+
+<input
+  id="reservationEmail"
+  type="email"
+  placeholder="votre@email.fr"
+  required
+>
+
+</div>
 
 <div class="form-field">
 
@@ -1994,7 +2007,42 @@ function renderClub(){
     return;
   }
 
+if (currentCard.blocked) {
 
+  publicClub.style.display = "block";
+
+  publicClub.innerHTML = `
+    <div class="member-title">
+      Carte désactivée
+    </div>
+
+    <p>
+      Cette carte Club a été désactivée.
+      Veuillez contacter la boutique.
+    </p>
+  `;
+
+  return;
+}
+
+
+if (currentCard.lost) {
+
+  publicClub.style.display = "block";
+
+  publicClub.innerHTML = `
+    <div class="member-title">
+      Carte non valide
+    </div>
+
+    <p>
+      Cette carte Club a été déclarée perdue.
+      Veuillez contacter la boutique.
+    </p>
+  `;
+
+  return;
+}
   if(
     !currentCard.active
   ){
@@ -2527,7 +2575,13 @@ document
               "reservationPhone"
             )
             .value,
-
+email:
+  document
+    .getElementById(
+      "reservationEmail"
+    )
+    .value
+    .trim(),
         consentement:
           document
             .getElementById(
