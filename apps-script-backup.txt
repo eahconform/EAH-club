@@ -575,17 +575,37 @@ function doPost(e) {
 
     else if (action === "reserve") {
 
-      result =
-        createReservation_({
-          requestId: e.parameter.requestId,
-          card: e.parameter.card,
-          produitId: e.parameter.produitId,
-          taille: e.parameter.taille,
-          prenom: e.parameter.prenom,
-          nom: e.parameter.nom,
-          telephone: e.parameter.telephone,
-          consentement: e.parameter.consentement
-        });
+    result =
+  createReservation_({
+
+    requestId:
+      e.parameter.requestId,
+
+    card:
+      e.parameter.card,
+
+    produitId:
+      e.parameter.produitId,
+
+    taille:
+      e.parameter.taille,
+
+    prenom:
+      e.parameter.prenom,
+
+    nom:
+      e.parameter.nom,
+
+    telephone:
+      e.parameter.telephone,
+
+    email:
+      e.parameter.email,
+
+    consentement:
+      e.parameter.consentement
+
+  });
 
     }
 
@@ -935,7 +955,20 @@ function createReservation_(data) {
 
   const telephone =
     String(data.telephone || "").trim();
+const email =
+  String(data.email || "")
+    .trim()
+    .toLowerCase();
 
+if (
+  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    .test(email)
+) {
+
+  throw new Error(
+    "Adresse email invalide"
+  );
+}
   const taille =
     String(data.taille || "").trim();
 
@@ -1013,12 +1046,32 @@ function createReservation_(data) {
 
     numeroCarte,
 
-    data.card || "",
+  data.card || "",
 
-    "Réservation web 24h"
+"Réservation web 24h",
 
-  ]);
+email
 
+]);
+envoyerEmailsReservation_({
+
+  produit: produit,
+
+  taille: taille,
+
+  prenom: prenom,
+
+  nom: nom,
+
+  telephone: telephone,
+
+  email: email,
+
+  expiry: expiry,
+
+  requestId: requestId
+
+});
   return {
     ok: true,
     id: requestId
@@ -1799,4 +1852,238 @@ function declarerCartePerdue(numeroCarte) {
   }
 
   console.log("Statuts synchronisés.");
+}function configurerCouleursStatuts() {
+
+  const ss = getSpreadsheet_();
+  const sheet = ss.getSheetByName("CARTES");
+
+  const lastRow = sheet.getLastRow();
+
+  if (lastRow < 2) return;
+
+  const range = sheet.getRange(
+    2,
+    1,
+    lastRow - 1,
+    10
+  );
+
+  // ACTIVE = vert
+  const activeRule = SpreadsheetApp
+    .newConditionalFormatRule()
+    .whenFormulaSatisfied('=$J2="ACTIVE"')
+    .setBackground("#d9ead3")
+    .setFontColor("#000000")
+    .setRanges([range])
+    .build();
+
+  // BLOQUÉE ou PERDUE = rouge
+  const blockedRule = SpreadsheetApp
+    .newConditionalFormatRule()
+    .whenFormulaSatisfied(
+      '=OR($J2="BLOQUÉE",$J2="PERDUE")'
+    )
+    .setBackground("#f4cccc")
+    .setFontColor("#000000")
+    .setRanges([range])
+    .build();
+
+  sheet.setConditionalFormatRules([
+    activeRule,
+    blockedRule
+  ]);
+
+  console.log("Couleurs configurées.");
+}function ajouterEmailReservations() {
+
+  const ss = getSpreadsheet_();
+  const sheet = ss.getSheetByName("RESERVATIONS");
+
+  sheet
+    .getRange(1, 14)
+    .setValue("EMAIL");
+
+  console.log("Colonne EMAIL ajoutée.");
+}function envoyerEmailsReservation_(reservation) {
+
+  const adminEmail =
+    "goin.eah@gmail.com";
+
+  const timezone =
+    Session.getScriptTimeZone() ||
+    "Europe/Paris";
+
+  const expiration =
+    Utilities.formatDate(
+      reservation.expiry,
+      timezone,
+      "dd/MM/yyyy 'à' HH:mm"
+    );
+
+
+  /* =============================
+     EMAIL EAH
+  ============================= */
+
+  MailApp.sendEmail({
+
+    to: adminEmail,
+
+    replyTo: reservation.email,
+
+    name: "EAH Boutique",
+
+    subject:
+      "Nouvelle réservation - " +
+      reservation.produit.nom,
+
+    body:
+      "Nouvelle réservation EAH Boutique",
+
+    htmlBody: `
+
+      <h2>
+        Nouvelle réservation
+      </h2>
+
+      <p>
+        <strong>Article :</strong>
+        ${reservation.produit.nom}
+      </p>
+
+      <p>
+        <strong>Taille :</strong>
+        ${reservation.taille}
+      </p>
+
+      <p>
+        <strong>Client :</strong>
+        ${reservation.prenom}
+        ${reservation.nom}
+      </p>
+
+      <p>
+        <strong>Téléphone :</strong>
+        ${reservation.telephone}
+      </p>
+
+      <p>
+        <strong>Email :</strong>
+        ${reservation.email}
+      </p>
+
+      <p>
+        <strong>Réservation valable jusqu'au :</strong>
+        ${expiration}
+      </p>
+
+      <p>
+        Référence :
+        ${reservation.requestId}
+      </p>
+    `
+  });
+
+
+  /* =============================
+     EMAIL CLIENT
+  ============================= */
+
+  MailApp.sendEmail({
+
+    to: reservation.email,
+
+    replyTo: adminEmail,
+
+    name: "EAH Boutique",
+
+    subject:
+      "Votre réservation EAH Boutique",
+
+    body:
+      "Votre réservation a bien été enregistrée.",
+
+    htmlBody: `
+
+      <h2>
+        Merci ${reservation.prenom} !
+      </h2>
+
+      <p>
+        Votre réservation a bien été enregistrée.
+      </p>
+
+      <p>
+        <strong>Article :</strong>
+        ${reservation.produit.nom}
+      </p>
+
+      <p>
+        <strong>Taille :</strong>
+        ${reservation.taille}
+      </p>
+
+      <p>
+        Votre article est réservé jusqu'au :
+      </p>
+
+      <h3>
+        ${expiration}
+      </h3>
+
+      <p>
+        La boutique pourra vous contacter
+        pour confirmer sa disponibilité.
+      </p>
+
+      <p>
+        Référence :
+        ${reservation.requestId}
+      </p>
+
+      <hr>
+
+      <p>
+        EAH Boutique de prêt à porter
+      </p>
+    `
+  });
+}function testEmailEAH() {
+
+  MailApp.sendEmail({
+    to: "goin.eah@gmail.com",
+    subject: "TEST EAH CLUB",
+    body: "Si tu reçois ce message, Apps Script peut envoyer des emails."
+  });
+
+  console.log("Email de test envoyé.");
+}function testerEmailsReservation() {
+
+  envoyerEmailsReservation_({
+
+    produit: {
+      nom: "Veste Milano"
+    },
+
+    taille: "M",
+
+    prenom: "Emeric",
+
+    nom: "Test",
+
+    telephone: "0600000000",
+
+    email: "goin.eah@gmail.com",
+
+    expiry: new Date(
+      Date.now() + 24 * 60 * 60 * 1000
+    ),
+
+    requestId: "TEST-EAH-001"
+
+  });
+
+  console.log(
+    "Test des emails de réservation terminé."
+  );
 }
