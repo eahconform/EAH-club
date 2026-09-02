@@ -1,0 +1,2794 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<title>EAH Boutique | Club Privé</title>
+
+<meta
+  name="description"
+  content="EAH Boutique de prêt à porter - Collection, nouveautés et avantages Club."
+>
+
+<link
+  rel="preconnect"
+  href="https://cdnjs.cloudflare.com"
+>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+>
+
+<style>
+
+/* ============================================================
+   BASE
+============================================================ */
+
+:root{
+
+  --black:#070707;
+  --black2:#111111;
+
+  --gold:#d5ad4a;
+  --gold-light:#f5dc91;
+
+  --white:#f8f5ee;
+  --grey:#aaa;
+
+  --radius:22px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  margin:0;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #211b0d 0,
+      #090909 32%,
+      #050505 70%
+    );
+
+  color:white;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+nav{
+
+  position:fixed;
+
+  top:0;
+
+  left:0;
+
+  right:0;
+
+  z-index:1000;
+
+  display:flex;
+
+  justify-content:
+    space-between;
+
+  align-items:center;
+
+  padding:
+    18px
+    7%;
+
+  backdrop-filter:
+    blur(18px);
+
+  background:
+    rgba(
+      5,
+      5,
+      5,
+      .72
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      213,
+      173,
+      74,
+      .18
+    );
+}
+
+.logo{
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      24px,
+      3vw,
+      36px
+    );
+
+  letter-spacing:
+    4px;
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+.nav-links{
+
+  display:flex;
+
+  gap:24px;
+
+  font-size:14px;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    1.5px;
+}
+
+.nav-links a{
+
+  transition:
+    color .3s;
+}
+
+.nav-links a:hover{
+  color:var(--gold);
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero{
+
+  min-height:
+    100vh;
+
+  display:grid;
+
+  place-items:center;
+
+  text-align:center;
+
+  padding:
+    130px 7%
+    80px;
+
+  position:relative;
+}
+
+.hero::after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(
+        0,
+        0,
+        0,
+        .7
+      )
+    );
+
+  pointer-events:none;
+}
+
+.hero-content{
+
+  max-width:
+    900px;
+
+  z-index:2;
+}
+
+.eyebrow{
+
+  color:var(--gold);
+
+  letter-spacing:
+    6px;
+
+  text-transform:
+    uppercase;
+
+  font-size:
+    12px;
+}
+
+h1{
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-weight:
+    400;
+
+  font-size:
+    clamp(
+      48px,
+      8vw,
+      100px
+    );
+
+  line-height:
+    .95;
+
+  margin:
+    25px 0;
+}
+
+.gold{
+  color:var(--gold);
+}
+
+.hero p{
+
+  color:#ccc;
+
+  max-width:
+    700px;
+
+  margin:
+    0 auto 35px;
+
+  line-height:
+    1.8;
+
+  font-size:
+    18px;
+}
+
+
+/* ============================================================
+   BOUTONS
+============================================================ */
+
+.btn{
+
+  border:0;
+
+  cursor:pointer;
+
+  padding:
+    15px 26px;
+
+  border-radius:
+    999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #a87918,
+      #f3da8c,
+      #b17c1b
+    );
+
+  color:#080808;
+
+  font-weight:bold;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    1.4px;
+
+  transition:
+    transform .3s,
+    box-shadow .3s;
+}
+
+.btn:hover{
+
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 15px 40px
+    rgba(
+      213,
+      173,
+      74,
+      .23
+    );
+}
+
+.btn-secondary{
+
+  background:
+    transparent;
+
+  border:
+    1px solid
+    var(--gold);
+
+  color:
+    var(--gold);
+}
+
+
+/* ============================================================
+   SECTIONS
+============================================================ */
+
+section{
+
+  padding:
+    90px 7%;
+}
+
+.section-head{
+
+  text-align:center;
+
+  margin-bottom:
+    50px;
+}
+
+.section-head small{
+
+  color:
+    var(--gold);
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    4px;
+}
+
+.section-head h2{
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      36px,
+      5vw,
+      60px
+    );
+
+  font-weight:
+    normal;
+
+  margin:
+    15px 0;
+}
+
+
+/* ============================================================
+   CLUB
+============================================================ */
+
+.club{
+
+  max-width:
+    1100px;
+
+  margin:
+    auto;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(
+        213,
+        173,
+        74,
+        .14
+      ),
+      rgba(
+        255,
+        255,
+        255,
+        .02
+      )
+    );
+
+  border:
+    1px solid
+    rgba(
+      213,
+      173,
+      74,
+      .35
+    );
+
+  border-radius:
+    30px;
+
+  padding:
+    40px;
+
+  box-shadow:
+    0 40px 100px
+    rgba(
+      0,
+      0,
+      0,
+      .5
+    );
+}
+
+.member-title{
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    42px;
+}
+
+.member-card-number{
+
+  color:
+    var(--gold);
+
+  margin-top:
+    10px;
+}
+
+.offers{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        230px,
+        1fr
+      )
+    );
+
+  gap:
+    18px;
+
+  margin-top:
+    30px;
+}
+
+.offer{
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .04
+    );
+
+  padding:
+    24px;
+
+  border-radius:
+    20px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      .08
+    );
+}
+
+.offer i{
+
+  color:
+    var(--gold);
+
+  font-size:
+    25px;
+
+  margin-bottom:
+    15px;
+}
+
+
+/* ============================================================
+   ACTIVATION
+============================================================ */
+
+.activation{
+
+  display:none;
+
+  max-width:
+    600px;
+
+  margin:
+    auto;
+
+  text-align:center;
+}
+
+.form-field{
+
+  margin:
+    18px 0;
+
+  text-align:left;
+}
+
+.form-field label{
+
+  display:block;
+
+  color:#ddd;
+
+  margin-bottom:
+    7px;
+}
+
+.form-field input,
+.form-field select{
+
+  width:100%;
+
+  padding:
+    15px;
+
+  border-radius:
+    12px;
+
+  border:
+    1px solid
+    rgba(
+      213,
+      173,
+      74,
+      .3
+    );
+
+  background:
+    #111;
+
+  color:white;
+}
+
+
+/* ============================================================
+   PRODUITS
+============================================================ */
+
+.products-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        240px,
+        1fr
+      )
+    );
+
+  gap:
+    25px;
+
+  max-width:
+    1250px;
+
+  margin:auto;
+}
+
+.product{
+
+  border-radius:
+    var(--radius);
+
+  overflow:hidden;
+
+  background:
+    #0d0d0d;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      .08
+    );
+
+  cursor:pointer;
+
+  transition:
+    transform .4s,
+    border-color .4s,
+    box-shadow .4s;
+}
+
+.product:hover{
+
+  transform:
+    translateY(-10px);
+
+  border-color:
+    var(--gold);
+
+  box-shadow:
+    0 25px 60px
+    rgba(
+      0,
+      0,
+      0,
+      .55
+    );
+}
+
+.product-image{
+
+  height:
+    330px;
+
+  overflow:hidden;
+
+  position:relative;
+
+  background:
+    #171717;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+}
+
+.product-image img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+  transition:
+    transform .7s;
+}
+
+.product:hover img{
+
+  transform:
+    scale(1.06);
+}
+
+.badge{
+
+  position:absolute;
+
+  top:15px;
+
+  left:15px;
+
+  background:
+    var(--gold);
+
+  color:#090909;
+
+  border-radius:
+    999px;
+
+  padding:
+    7px 12px;
+
+  font-size:
+    11px;
+
+  font-weight:bold;
+
+  text-transform:
+    uppercase;
+}
+
+.product-info{
+
+  padding:
+    20px;
+}
+
+.product-category{
+
+  color:
+    var(--gold);
+
+  text-transform:
+    uppercase;
+
+  font-size:
+    11px;
+
+  letter-spacing:
+    2px;
+}
+
+.product-name{
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    23px;
+
+  margin:
+    10px 0;
+}
+
+.product-price{
+
+  color:
+    var(--gold-light);
+
+  font-size:
+    20px;
+}
+
+
+/* ============================================================
+   MODALE PRODUIT
+============================================================ */
+
+.modal{
+
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      .88
+    );
+
+  z-index:
+    3000;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:
+    20px;
+}
+
+.modal.open{
+
+  display:flex;
+}
+
+.modal-content{
+
+  width:
+    min(
+      1000px,
+      96vw
+    );
+
+  max-height:
+    92vh;
+
+  overflow:auto;
+
+  background:
+    #0e0e0e;
+
+  border:
+    1px solid
+    rgba(
+      213,
+      173,
+      74,
+      .4
+    );
+
+  border-radius:
+    28px;
+
+  padding:
+    30px;
+
+  position:relative;
+}
+
+.close{
+
+  position:absolute;
+
+  top:15px;
+
+  right:20px;
+
+  border:none;
+
+  background:none;
+
+  color:white;
+
+  font-size:
+    30px;
+
+  cursor:pointer;
+
+  z-index:5;
+}
+
+.modal-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    40px;
+}
+
+
+/* ============================================================
+   EFFET ROTATION 360°
+============================================================ */
+
+.product-360{
+
+  height:
+    500px;
+
+  perspective:
+    1200px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+}
+
+.rotor{
+
+  position:relative;
+
+  width:
+    80%;
+
+  height:
+    90%;
+
+  transform-style:
+    preserve-3d;
+
+  animation:
+    rotateProduct
+    16s
+    linear
+    infinite;
+}
+
+.rotor img{
+
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+  border-radius:
+    20px;
+
+  backface-visibility:
+    hidden;
+}
+
+.rotor img.back{
+
+  transform:
+    rotateY(180deg);
+}
+
+@keyframes rotateProduct{
+
+  from{
+    transform:
+      rotateY(0deg);
+  }
+
+  to{
+    transform:
+      rotateY(360deg);
+  }
+}
+
+
+/* ============================================================
+   SOCIAL
+============================================================ */
+
+.socials{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:
+    20px;
+
+  flex-wrap:wrap;
+}
+
+.social{
+
+  width:60px;
+
+  height:60px;
+
+  border-radius:
+    50%;
+
+  display:grid;
+
+  place-items:center;
+
+  background:#111;
+
+  border:
+    1px solid
+    rgba(
+      213,
+      173,
+      74,
+      .4
+    );
+
+  font-size:
+    24px;
+
+  transition:
+    .3s;
+}
+
+.social:hover{
+
+  background:
+    var(--gold);
+
+  color:#000;
+
+  transform:
+    translateY(-6px);
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+footer{
+
+  border-top:
+    1px solid
+    rgba(
+      213,
+      173,
+      74,
+      .2
+    );
+
+  padding:
+    50px 7%;
+
+  text-align:center;
+
+  color:#999;
+}
+
+
+/* ============================================================
+   ANIMATIONS
+============================================================ */
+
+.reveal{
+
+  opacity:0;
+
+  transform:
+    translateY(30px);
+
+  transition:
+    opacity .8s,
+    transform .8s;
+}
+
+.reveal.visible{
+
+  opacity:1;
+
+  transform:
+    translateY(0);
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media(max-width:800px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .modal-grid{
+    grid-template-columns:
+      1fr;
+  }
+
+  .product-360{
+    height:
+      390px;
+  }
+
+  section{
+    padding:
+      70px 5%;
+  }
+
+}
+</style>
+
+</head>
+
+<body>
+
+
+<!-- API -->
+<script>
+
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbxc-fspODvWMbd1I2TRLnoC0f7RNp9oXXHJVJwLfNjL1J6vBonJlNSvJfkLIXXzMRoT/exec";
+
+</script>
+
+
+<!-- POST invisible -->
+<iframe
+  name="eahApiFrame"
+  id="eahApiFrame"
+  style="display:none">
+</iframe>
+
+
+<nav>
+
+<div class="logo">
+EAH <span>BOUTIQUE</span>
+</div>
+
+<div class="nav-links">
+
+<a href="#collection">
+Collection
+</a>
+
+<a href="#club">
+Club
+</a>
+
+<a href="#social">
+Réseaux
+</a>
+
+</div>
+
+</nav>
+
+
+<header class="hero">
+
+<div class="hero-content">
+
+<div class="eyebrow">
+EAH Boutique de prêt à porter
+</div>
+
+<h1>
+Votre style.<br>
+<span class="gold">
+Votre privilège.
+</span>
+</h1>
+
+<p id="heroText">
+Découvrez nos nouveautés,
+nos pièces phares et
+les avantages exclusifs
+réservés aux membres
+EAH Club.
+</p>
+
+<a
+  href="#collection"
+  class="btn"
+>
+Découvrir la collection
+</a>
+
+</div>
+
+</header>
+
+
+<!-- CLUB -->
+<section id="club">
+
+<div class="section-head reveal">
+
+<small>
+EAH CLUB
+</small>
+
+<h2>
+Vos avantages exclusifs
+</h2>
+
+</div>
+
+
+<div
+  class="club reveal"
+  id="clubBox"
+>
+
+<div id="publicClub">
+
+<div class="member-title">
+EAH Club
+</div>
+
+<p>
+Approchez votre carte NFC
+pour accéder à votre
+espace personnel.
+</p>
+
+</div>
+
+
+<div
+  id="activationBox"
+  class="activation"
+>
+
+<h3>
+Activez votre Carte Club
+</h3>
+
+<p>
+Votre carte deviendra
+personnelle et vous
+accompagnera sur
+n'importe quel téléphone.
+</p>
+
+<form id="activationForm">
+
+<div class="form-field">
+
+<label>
+Votre prénom
+</label>
+
+<input
+  id="activationPrenom"
+  required
+>
+
+</div>
+
+<div class="form-field">
+
+<label>
+Anniversaire
+(JJ/MM)
+</label>
+
+<input
+  id="activationBirthday"
+  placeholder="14/06"
+  pattern="[0-9]{1,2}/[0-9]{1,2}"
+  required
+>
+
+</div>
+
+<div class="form-field">
+
+<label>
+
+<input
+  type="checkbox"
+  id="activationConsent"
+  required
+>
+
+J'accepte l'utilisation
+de ces informations pour
+le fonctionnement de ma
+Carte Club.
+
+</label>
+
+</div>
+
+<button
+  class="btn"
+  type="submit"
+>
+Activer ma carte
+</button>
+
+</form>
+
+</div>
+
+
+<div
+  id="memberArea"
+  style="display:none"
+>
+
+<div
+  class="member-title"
+  id="memberHello"
+>
+Bonjour
+</div>
+
+<div
+  class="member-card-number"
+  id="memberNumber"
+></div>
+
+<div
+  class="offers"
+  id="memberOffers"
+></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- COLLECTION -->
+<section id="collection">
+
+<div class="section-head reveal">
+
+<small>
+Sélection
+</small>
+
+<h2>
+Nos pièces phares
+</h2>
+
+<p>
+Découvrez notre sélection
+de 10 articles.
+</p>
+
+</div>
+
+<div
+  id="productsGrid"
+  class="products-grid"
+>
+</div>
+
+</section>
+
+
+<!-- SOCIAL -->
+<section id="social">
+
+<div class="section-head reveal">
+
+<small>
+Suivez-nous
+</small>
+
+<h2>
+Notre univers
+</h2>
+
+</div>
+
+<div
+  class="socials reveal"
+  id="socialLinks"
+>
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="logo">
+EAH <span>BOUTIQUE</span>
+</div>
+
+<p id="footerAddress">
+Lyon, France
+</p>
+
+<p id="footerHours">
+Lundi - Samedi
+</p>
+
+</footer>
+
+
+<!-- MODALE PRODUIT -->
+<div
+  id="productModal"
+  class="modal"
+>
+
+<div class="modal-content">
+
+<button
+  class="close"
+  onclick="closeModal()"
+>
+×
+</button>
+
+<div class="modal-grid">
+
+<div class="product-360">
+
+<div
+  class="rotor"
+  id="productRotor"
+>
+
+<img
+  id="modalImageFront"
+  alt=""
+>
+
+<img
+  id="modalImageBack"
+  class="back"
+  alt=""
+>
+
+</div>
+
+</div>
+
+
+<div>
+
+<div
+  class="product-category"
+  id="modalCategory"
+></div>
+
+<h2
+  id="modalName"
+  style="
+    font-family:Georgia,serif;
+    font-size:40px;
+  "
+></h2>
+
+<div
+  id="modalPrice"
+  class="product-price"
+></div>
+
+<p
+  id="modalDescription"
+  style="
+    color:#bbb;
+    line-height:1.8;
+  "
+></p>
+
+
+<hr
+  style="
+    border:none;
+    border-top:
+      1px solid #333;
+    margin:30px 0;
+  "
+>
+
+
+<h3>
+Réserver cet article 24h
+</h3>
+
+<form id="reservationForm">
+
+<input
+  type="hidden"
+  id="reservationProductId"
+>
+
+<div class="form-field">
+
+<label>
+Taille
+</label>
+
+<select
+  id="reservationSize"
+  required
+></select>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+Prénom
+</label>
+
+<input
+  id="reservationFirstName"
+  required
+>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+Nom
+</label>
+
+<input
+  id="reservationLastName"
+  required
+>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+Téléphone
+</label>
+
+<input
+  id="reservationPhone"
+  type="tel"
+  required
+>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+
+<input
+  id="reservationConsent"
+  type="checkbox"
+  required
+>
+
+J'accepte d'être contacté
+par la boutique concernant
+cette réservation.
+
+</label>
+
+</div>
+
+
+<button
+  type="submit"
+  class="btn"
+>
+Réserver pendant 24h
+</button>
+
+</form>
+
+
+<div
+  id="reservationMessage"
+  style="
+    margin-top:20px;
+    color:#f5dc91;
+  "
+></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ============================================================
+   VARIABLES
+============================================================ */
+
+const CARD_TOKEN =
+  new URLSearchParams(
+    location.search
+  ).get("card") || "";
+
+let currentCard = null;
+
+let products = [];
+
+let offers = [];
+
+let shop = {};
+
+
+/* ============================================================
+   JSONP GET
+============================================================ */
+
+function apiGet(
+  action,
+  params = {}
+){
+
+  return new Promise(
+    (resolve, reject) => {
+
+      const callback =
+        "eahCallback_" +
+        Date.now() +
+        "_" +
+        Math.floor(
+          Math.random() *
+          99999
+        );
+
+      const script =
+        document
+          .createElement(
+            "script"
+          );
+
+      window[callback] =
+        function(data){
+
+          delete window[
+            callback
+          ];
+
+          script.remove();
+
+          resolve(data);
+        };
+
+      const query =
+        new URLSearchParams({
+          action,
+          callback,
+          ...params
+        });
+
+      script.src =
+        API_URL +
+        "?" +
+        query.toString();
+
+      script.onerror =
+        function(){
+
+          delete window[
+            callback
+          ];
+
+          script.remove();
+
+          reject(
+            new Error(
+              "Erreur API"
+            )
+          );
+        };
+
+      document
+        .body
+        .appendChild(
+          script
+        );
+    }
+  );
+}
+
+
+/* ============================================================
+   POST SANS CORS
+============================================================ */
+
+function apiPost(data){
+
+  const form =
+    document
+      .createElement(
+        "form"
+      );
+
+  form.method =
+    "POST";
+
+  form.action =
+    API_URL;
+
+  form.target =
+    "eahApiFrame";
+
+  form.style.display =
+    "none";
+
+  Object.entries(
+    data
+  ).forEach(
+    ([key,value]) => {
+
+      const input =
+        document
+          .createElement(
+            "input"
+          );
+
+      input.type =
+        "hidden";
+
+      input.name =
+        key;
+
+      input.value =
+        value ?? "";
+
+      form.appendChild(
+        input
+      );
+    }
+  );
+
+  document
+    .body
+    .appendChild(
+      form
+    );
+
+  form.submit();
+
+  setTimeout(
+    () => form.remove(),
+    1500
+  );
+}
+
+
+/* ============================================================
+   CHARGEMENT
+============================================================ */
+
+async function init(){
+
+  try{
+
+    const data =
+      await apiGet(
+        "bootstrap",
+        {
+          card:
+            CARD_TOKEN
+        }
+      );
+
+    if(!data.ok){
+      throw new Error(
+        data.error
+      );
+    }
+
+    shop =
+      data.shop || {};
+
+    products =
+      data.products || [];
+
+    offers =
+      data.offers || [];
+
+    currentCard =
+      data.card || null;
+
+    renderShop();
+
+    renderProducts();
+
+    renderClub();
+
+    initReveal();
+
+  }
+
+  catch(err){
+
+    console.error(err);
+
+    document
+      .getElementById(
+        "heroText"
+      )
+      .textContent =
+      "Impossible de charger la boutique.";
+  }
+}
+
+
+/* ============================================================
+   BOUTIQUE
+============================================================ */
+
+function renderShop(){
+
+  if(
+    shop.HERO_TEXTE
+  ){
+
+    document
+      .getElementById(
+        "heroText"
+      )
+      .textContent =
+      shop.HERO_TEXTE;
+  }
+
+  document
+    .getElementById(
+      "footerAddress"
+    )
+    .textContent =
+    shop.ADRESSE || "";
+
+  document
+    .getElementById(
+      "footerHours"
+    )
+    .textContent =
+    shop.HORAIRES || "";
+
+  const socials = [
+
+    {
+      icon:
+        "fa-brands fa-instagram",
+
+      url:
+        shop.INSTAGRAM
+    },
+
+    {
+      icon:
+        "fa-brands fa-facebook-f",
+
+      url:
+        shop.FACEBOOK
+    },
+
+    {
+      icon:
+        "fa-brands fa-tiktok",
+
+      url:
+        shop.TIKTOK
+    },
+
+    {
+      icon:
+        "fa-brands fa-google",
+
+      url:
+        shop.GOOGLE_AVIS
+    }
+
+  ];
+
+  const container =
+    document
+      .getElementById(
+        "socialLinks"
+      );
+
+  container.innerHTML =
+    "";
+
+  socials.forEach(
+    item => {
+
+      if(!item.url){
+        return;
+      }
+
+      const a =
+        document
+          .createElement(
+            "a"
+          );
+
+      a.className =
+        "social";
+
+      a.href =
+        item.url;
+
+      a.target =
+        "_blank";
+
+      a.rel =
+        "noopener";
+
+      a.innerHTML =
+        `<i class="${item.icon}"></i>`;
+
+      container.appendChild(
+        a
+      );
+    }
+  );
+}
+
+
+/* ============================================================
+   CLUB
+============================================================ */
+
+function renderClub(){
+
+  const publicClub =
+    document
+      .getElementById(
+        "publicClub"
+      );
+
+  const activation =
+    document
+      .getElementById(
+        "activationBox"
+      );
+
+  const member =
+    document
+      .getElementById(
+        "memberArea"
+      );
+
+  publicClub.style.display =
+    "none";
+
+  activation.style.display =
+    "none";
+
+  member.style.display =
+    "none";
+
+
+  if(!CARD_TOKEN){
+
+    publicClub.style.display =
+      "block";
+
+    return;
+  }
+
+
+  if(
+    !currentCard ||
+    !currentCard.exists
+  ){
+
+    publicClub.style.display =
+      "block";
+
+    publicClub.innerHTML =
+      `
+      <div class="member-title">
+      Carte inconnue
+      </div>
+
+      <p>
+      Cette carte n'est pas
+      reconnue par le système.
+      </p>
+      `;
+
+    return;
+  }
+
+
+  if(
+    !currentCard.active
+  ){
+
+    activation.style.display =
+      "block";
+
+    return;
+  }
+
+
+  member.style.display =
+    "block";
+
+  document
+    .getElementById(
+      "memberHello"
+    )
+    .textContent =
+    "Bonjour " +
+    currentCard.prenom +
+    " 👋";
+
+  document
+    .getElementById(
+      "memberNumber"
+    )
+    .textContent =
+    "Carte Club N°" +
+    currentCard.numero;
+
+
+  const box =
+    document
+      .getElementById(
+        "memberOffers"
+      );
+
+  box.innerHTML =
+    "";
+
+
+  offers.forEach(
+    offer => {
+
+      if(
+        offer.type ===
+        "ANNIVERSAIRE" &&
+        !currentCard.birthdayMonth
+      ){
+        return;
+      }
+
+      const div =
+        document
+          .createElement(
+            "div"
+          );
+
+      div.className =
+        "offer";
+
+      const icon =
+        offer.type ===
+        "ANNIVERSAIRE"
+        ?
+        "fa-gift"
+        :
+        "fa-tag";
+
+      div.innerHTML =
+        `
+        <i class="fa-solid ${icon}">
+        </i>
+
+        <h3>
+        ${escapeHtml(
+          offer.titre
+        )}
+        </h3>
+
+        <p>
+        ${escapeHtml(
+          offer.description
+        )}
+        </p>
+        `;
+
+      box.appendChild(
+        div
+      );
+    }
+  );
+}
+
+
+/* ============================================================
+   ACTIVATION
+============================================================ */
+
+document
+  .getElementById(
+    "activationForm"
+  )
+  .addEventListener(
+    "submit",
+    async e => {
+
+      e.preventDefault();
+
+      const prenom =
+        document
+          .getElementById(
+            "activationPrenom"
+          )
+          .value
+          .trim();
+
+      const anniversaire =
+        document
+          .getElementById(
+            "activationBirthday"
+          )
+          .value
+          .trim();
+
+      const consent =
+        document
+          .getElementById(
+            "activationConsent"
+          )
+          .checked;
+
+
+      if(!consent){
+        return;
+      }
+
+
+      apiPost({
+
+        action:
+          "activate",
+
+        card:
+          CARD_TOKEN,
+
+        prenom,
+
+        anniversaire,
+
+        consentement:
+          "true"
+      });
+
+
+      // On attend que Google Sheets
+      // soit mis à jour.
+      for(
+        let i = 0;
+        i < 12;
+        i++
+      ){
+
+        await wait(700);
+
+        const result =
+          await apiGet(
+            "card",
+            {
+              card:
+                CARD_TOKEN
+            }
+          );
+
+        if(
+          result.active
+        ){
+
+          currentCard =
+            result;
+
+          renderClub();
+
+          return;
+        }
+      }
+
+      alert(
+        "L'activation prend un peu plus de temps. Rechargez la page."
+      );
+
+    }
+  );
+
+
+/* ============================================================
+   PRODUITS
+============================================================ */
+
+function renderProducts(){
+
+  const grid =
+    document
+      .getElementById(
+        "productsGrid"
+      );
+
+  grid.innerHTML =
+    "";
+
+  products.forEach(
+    product => {
+
+      const article =
+        document
+          .createElement(
+            "article"
+          );
+
+      article.className =
+        "product reveal";
+
+      const fallback =
+        placeholderImage(
+          product.nom
+        );
+
+      article.innerHTML =
+        `
+        <div class="product-image">
+
+        <img
+          src="${escapeAttr(
+            product.image
+          )}"
+          alt="${escapeAttr(
+            product.nom
+          )}"
+        >
+
+        <div class="badge">
+        ${escapeHtml(
+          product.badge || ""
+        )}
+        </div>
+
+        </div>
+
+        <div class="product-info">
+
+        <div class="product-category">
+        ${escapeHtml(
+          product.categorie
+        )}
+        </div>
+
+        <div class="product-name">
+        ${escapeHtml(
+          product.nom
+        )}
+        </div>
+
+        <div class="product-price">
+        ${escapeHtml(
+          product.prix
+        )}
+        </div>
+
+        </div>
+        `;
+
+      const img =
+        article.querySelector(
+          "img"
+        );
+
+      img.onerror =
+        () => {
+          img.src =
+            fallback;
+        };
+
+      article.onclick =
+        () =>
+          openProduct(
+            product
+          );
+
+      grid.appendChild(
+        article
+      );
+    }
+  );
+}
+
+
+/* ============================================================
+   MODALE
+============================================================ */
+
+function openProduct(
+  product
+){
+
+  document
+    .getElementById(
+      "modalCategory"
+    )
+    .textContent =
+    product.categorie;
+
+  document
+    .getElementById(
+      "modalName"
+    )
+    .textContent =
+    product.nom;
+
+  document
+    .getElementById(
+      "modalPrice"
+    )
+    .textContent =
+    product.prix;
+
+  document
+    .getElementById(
+      "modalDescription"
+    )
+    .textContent =
+    product.description;
+
+
+  const fallback =
+    placeholderImage(
+      product.nom
+    );
+
+  const front =
+    document
+      .getElementById(
+        "modalImageFront"
+      );
+
+  const back =
+    document
+      .getElementById(
+        "modalImageBack"
+      );
+
+  front.src =
+    product.image;
+
+  back.src =
+    product.image;
+
+  front.onerror =
+    () => {
+      front.src =
+        fallback;
+    };
+
+  back.onerror =
+    () => {
+      back.src =
+        fallback;
+    };
+
+
+  document
+    .getElementById(
+      "reservationProductId"
+    )
+    .value =
+    product.id;
+
+
+  const select =
+    document
+      .getElementById(
+        "reservationSize"
+      );
+
+  select.innerHTML =
+    "";
+
+  product.tailles
+    .forEach(
+      taille => {
+
+        const option =
+          document
+            .createElement(
+              "option"
+            );
+
+        option.value =
+          taille;
+
+        option.textContent =
+          taille;
+
+        select.appendChild(
+          option
+        );
+      }
+    );
+
+
+  if(
+    currentCard &&
+    currentCard.active
+  ){
+
+    document
+      .getElementById(
+        "reservationFirstName"
+      )
+      .value =
+      currentCard.prenom || "";
+  }
+
+
+  document
+    .getElementById(
+      "reservationMessage"
+    )
+    .textContent =
+    "";
+
+
+  document
+    .getElementById(
+      "productModal"
+    )
+    .classList
+    .add(
+      "open"
+    );
+
+  document.body.style.overflow =
+    "hidden";
+}
+
+
+function closeModal(){
+
+  document
+    .getElementById(
+      "productModal"
+    )
+    .classList
+    .remove(
+      "open"
+    );
+
+  document.body.style.overflow =
+    "";
+}
+
+
+/* ============================================================
+   RESERVATION
+============================================================ */
+
+document
+  .getElementById(
+    "reservationForm"
+  )
+  .addEventListener(
+    "submit",
+    async e => {
+
+      e.preventDefault();
+
+      const requestId =
+        (
+          crypto.randomUUID
+          ?
+          crypto.randomUUID()
+          :
+          Date.now() +
+          "-" +
+          Math.random()
+        );
+
+
+      apiPost({
+
+        action:
+          "reserve",
+
+        requestId,
+
+        card:
+          CARD_TOKEN,
+
+        produitId:
+          document
+            .getElementById(
+              "reservationProductId"
+            )
+            .value,
+
+        taille:
+          document
+            .getElementById(
+              "reservationSize"
+            )
+            .value,
+
+        prenom:
+          document
+            .getElementById(
+              "reservationFirstName"
+            )
+            .value,
+
+        nom:
+          document
+            .getElementById(
+              "reservationLastName"
+            )
+            .value,
+
+        telephone:
+          document
+            .getElementById(
+              "reservationPhone"
+            )
+            .value,
+
+        consentement:
+          document
+            .getElementById(
+              "reservationConsent"
+            )
+            .checked
+          ?
+          "true"
+          :
+          "false"
+
+      });
+
+
+      const message =
+        document
+          .getElementById(
+            "reservationMessage"
+          );
+
+      message.textContent =
+        "Enregistrement de votre réservation...";
+
+
+      for(
+        let i = 0;
+        i < 12;
+        i++
+      ){
+
+        await wait(700);
+
+        const status =
+          await apiGet(
+            "reservationStatus",
+            {
+              id:
+                requestId
+            }
+          );
+
+
+        if(
+          status.found
+        ){
+
+          message.innerHTML =
+            `
+            ✅ Votre article est
+            réservé pendant 24 h.
+
+            <br><br>
+
+            La boutique peut vous
+            contacter pour confirmer
+            la disponibilité.
+            `;
+
+          return;
+        }
+      }
+
+
+      message.textContent =
+        "Réservation envoyée. La boutique vous contactera pour confirmation.";
+
+    }
+  );
+
+
+/* ============================================================
+   ANIMATIONS
+============================================================ */
+
+function initReveal(){
+
+  const observer =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(
+          entry => {
+
+            if(
+              entry.isIntersecting
+            ){
+
+              entry.target
+                .classList
+                .add(
+                  "visible"
+                );
+
+              observer
+                .unobserve(
+                  entry.target
+                );
+            }
+          }
+        );
+
+      },
+      {
+        threshold:.12
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      ".reveal"
+    )
+    .forEach(
+      element =>
+        observer.observe(
+          element
+        )
+    );
+}
+
+
+/* ============================================================
+   OUTILS
+============================================================ */
+
+function wait(ms){
+
+  return new Promise(
+    resolve =>
+      setTimeout(
+        resolve,
+        ms
+      )
+  );
+}
+
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+  .replaceAll(
+    "&",
+    "&amp;"
+  )
+  .replaceAll(
+    "<",
+    "&lt;"
+  )
+  .replaceAll(
+    ">",
+    "&gt;"
+  )
+  .replaceAll(
+    '"',
+    "&quot;"
+  )
+  .replaceAll(
+    "'",
+    "&#039;"
+  );
+}
+
+
+function escapeAttr(value){
+  return escapeHtml(value);
+}
+
+
+function placeholderImage(
+  name
+){
+
+  const text =
+    escapeHtml(
+      name
+    );
+
+  const svg =
+  `
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="900"
+    height="1200"
+  >
+
+  <defs>
+
+  <linearGradient
+    id="g"
+    x1="0"
+    y1="0"
+    x2="1"
+    y2="1"
+  >
+
+  <stop
+    offset="0"
+    stop-color="#080808"
+  />
+
+  <stop
+    offset="1"
+    stop-color="#31240a"
+  />
+
+  </linearGradient>
+
+  </defs>
+
+  <rect
+    width="100%"
+    height="100%"
+    fill="url(#g)"
+  />
+
+  <text
+    x="50%"
+    y="48%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    fill="#d5ad4a"
+    font-family="Georgia"
+    font-size="55"
+  >
+  EAH
+  </text>
+
+  <text
+    x="50%"
+    y="55%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    fill="#f8f5ee"
+    font-family="Arial"
+    font-size="28"
+  >
+  ${text}
+  </text>
+
+  </svg>
+  `;
+
+  return (
+    "data:image/svg+xml;charset=UTF-8," +
+    encodeURIComponent(
+      svg
+    )
+  );
+}
+
+
+/* ============================================================
+   DEMARRAGE
+============================================================ */
+
+init();
+
+</script>
+
+</body>
+
+</html>
