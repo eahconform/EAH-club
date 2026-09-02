@@ -1479,7 +1479,18 @@ Lundi - Samedi
   "
 >
 
+<div style="margin:25px 0;">
 
+<button
+  type="button"
+  class="btn"
+  id="demoBuyButton"
+>
+  <i class="fa-solid fa-bag-shopping"></i>
+  Acheter maintenant
+</button>
+
+</div>
 <h3>
 Réserver cet article 24h
 </h3>
@@ -1605,7 +1616,288 @@ Réserver pendant 24h
 </div>
 
 </div>
+<!-- =========================================================
+     PAIEMENT DEMO
+========================================================= -->
 
+<div
+  id="demoCheckoutModal"
+  class="modal"
+>
+
+<div class="modal-content" style="max-width:650px;">
+
+<button
+  class="close"
+  type="button"
+  onclick="closeDemoCheckout()"
+>
+×
+</button>
+
+<div style="text-align:center;margin-bottom:30px;">
+
+<div style="
+  display:inline-block;
+  padding:7px 15px;
+  border:1px solid #d5ad4a;
+  border-radius:999px;
+  color:#d5ad4a;
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:15px;
+">
+MODE DÉMONSTRATION
+</div>
+
+<h2 style="
+  font-family:Georgia,serif;
+  font-size:38px;
+  margin:10px 0;
+">
+Paiement sécurisé
+</h2>
+
+<p style="color:#aaa;">
+Simulation uniquement — aucun paiement réel ne sera effectué.
+</p>
+
+</div>
+
+
+<div
+  id="demoOrderSummary"
+  style="
+    background:#151515;
+    border:1px solid rgba(213,173,74,.25);
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:25px;
+  "
+>
+</div>
+
+
+<form id="demoCheckoutForm">
+
+<div class="form-field">
+
+<label>
+Taille
+</label>
+
+<select
+  id="demoCheckoutSize"
+  required
+></select>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+Prénom
+</label>
+
+<input
+  id="demoCheckoutFirstName"
+  required
+>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+Nom
+</label>
+
+<input
+  id="demoCheckoutLastName"
+  required
+>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+E-mail
+</label>
+
+<input
+  id="demoCheckoutEmail"
+  type="email"
+  required
+>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+Mode de réception
+</label>
+
+<select id="demoDeliveryMode">
+
+<option value="Retrait boutique">
+Retrait en boutique
+</option>
+
+<option value="Livraison">
+Livraison à domicile — Démo
+</option>
+
+</select>
+
+</div>
+
+
+<div style="
+  margin-top:30px;
+  padding:22px;
+  border-radius:18px;
+  background:#0a0a0a;
+  border:1px solid rgba(255,255,255,.1);
+">
+
+<div style="
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+">
+
+<strong>
+Carte bancaire
+</strong>
+
+<span style="color:#d5ad4a;">
+DÉMO
+</span>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+Numéro de carte fictif
+</label>
+
+<input
+  value="4242 4242 4242 4242"
+  readonly
+>
+
+</div>
+
+
+<div style="
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+">
+
+<div class="form-field">
+
+<label>
+Expiration
+</label>
+
+<input
+  value="12/30"
+  readonly
+>
+
+</div>
+
+
+<div class="form-field">
+
+<label>
+CVC
+</label>
+
+<input
+  value="123"
+  readonly
+>
+
+</div>
+
+</div>
+
+<p style="
+  font-size:12px;
+  color:#888;
+">
+Ces informations sont fictives et servent uniquement à la démonstration.
+</p>
+
+</div>
+
+
+<button
+  type="submit"
+  class="btn"
+  style="
+    width:100%;
+    margin-top:25px;
+    font-size:16px;
+  "
+>
+SIMULER LE PAIEMENT
+</button>
+
+</form>
+
+
+<div
+  id="demoPaymentSuccess"
+  style="
+    display:none;
+    text-align:center;
+    padding:35px 15px;
+  "
+>
+
+<div style="
+  font-size:65px;
+  margin-bottom:20px;
+">
+✓
+</div>
+
+<h2 style="
+  color:#d5ad4a;
+  font-family:Georgia,serif;
+">
+Commande simulée avec succès
+</h2>
+
+<p>
+Aucun paiement réel n'a été effectué.
+</p>
+
+<p id="demoOrderReference"></p>
+
+<button
+  class="btn"
+  onclick="closeDemoCheckout()"
+>
+Continuer mes achats
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 <script>
 
@@ -1625,7 +1917,7 @@ let products = [];
 let offers = [];
 
 let shop = {};
-
+let currentProduct = null;
 
 /* ============================================================
    JSONP GET
@@ -2347,7 +2639,7 @@ function renderProducts(){
 function openProduct(
   product
 ){
-
+currentProduct = product;
   document
     .getElementById(
       "modalCategory"
@@ -2838,7 +3130,300 @@ function placeholderImage(
 /* ============================================================
    DEMARRAGE
 ============================================================ */
+/* ============================================================
+   PAIEMENT DEMONSTRATION
+============================================================ */
 
+document
+  .getElementById("demoBuyButton")
+  .addEventListener(
+    "click",
+    function(){
+
+      if(!currentProduct){
+        return;
+      }
+
+      openDemoCheckout(
+        currentProduct
+      );
+
+    }
+  );
+
+
+function openDemoCheckout(product){
+
+  const modal =
+    document.getElementById(
+      "demoCheckoutModal"
+    );
+
+  const summary =
+    document.getElementById(
+      "demoOrderSummary"
+    );
+
+  const sizeSelect =
+    document.getElementById(
+      "demoCheckoutSize"
+    );
+
+  summary.innerHTML = `
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    ">
+
+      <div>
+
+        <div style="
+          color:#d5ad4a;
+          font-size:12px;
+          letter-spacing:2px;
+          text-transform:uppercase;
+        ">
+          Votre commande
+        </div>
+
+        <h3 style="margin:8px 0;">
+          ${escapeHtml(product.nom)}
+        </h3>
+
+      </div>
+
+      <div style="
+        font-size:22px;
+        color:#f5dc91;
+        font-weight:bold;
+      ">
+        ${escapeHtml(product.prix)}
+      </div>
+
+    </div>
+  `;
+
+
+  sizeSelect.innerHTML = "";
+
+  product.tailles.forEach(
+    taille => {
+
+      const option =
+        document.createElement(
+          "option"
+        );
+
+      option.value =
+        taille;
+
+      option.textContent =
+        taille;
+
+      sizeSelect.appendChild(
+        option
+      );
+
+    }
+  );
+
+
+  if(
+    currentCard &&
+    currentCard.active
+  ){
+
+    document
+      .getElementById(
+        "demoCheckoutFirstName"
+      )
+      .value =
+      currentCard.prenom || "";
+
+  }
+
+
+  document
+    .getElementById(
+      "demoCheckoutForm"
+    )
+    .style.display =
+    "block";
+
+
+  document
+    .getElementById(
+      "demoPaymentSuccess"
+    )
+    .style.display =
+    "none";
+
+
+  modal.classList.add(
+    "open"
+  );
+
+  document.body.style.overflow =
+    "hidden";
+}
+
+
+function closeDemoCheckout(){
+
+  document
+    .getElementById(
+      "demoCheckoutModal"
+    )
+    .classList
+    .remove(
+      "open"
+    );
+
+  document.body.style.overflow =
+    "";
+}
+
+
+/* ============================================================
+   SIMULATION DU PAIEMENT
+============================================================ */
+
+document
+  .getElementById(
+    "demoCheckoutForm"
+  )
+  .addEventListener(
+    "submit",
+    function(e){
+
+      e.preventDefault();
+
+
+      const prenom =
+        document
+          .getElementById(
+            "demoCheckoutFirstName"
+          )
+          .value
+          .trim();
+
+
+      const nom =
+        document
+          .getElementById(
+            "demoCheckoutLastName"
+          )
+          .value
+          .trim();
+
+
+      const email =
+        document
+          .getElementById(
+            "demoCheckoutEmail"
+          )
+          .value
+          .trim();
+
+
+      const taille =
+        document
+          .getElementById(
+            "demoCheckoutSize"
+          )
+          .value;
+
+
+      const delivery =
+        document
+          .getElementById(
+            "demoDeliveryMode"
+          )
+          .value;
+
+
+      if(
+        !prenom ||
+        !nom ||
+        !email
+      ){
+
+        alert(
+          "Veuillez compléter vos informations."
+        );
+
+        return;
+      }
+
+
+      const reference =
+        "DEMO-" +
+        Date.now()
+          .toString()
+          .slice(-8);
+
+
+      document
+        .getElementById(
+          "demoCheckoutForm"
+        )
+        .style.display =
+        "none";
+
+
+      const success =
+        document
+          .getElementById(
+            "demoPaymentSuccess"
+          );
+
+
+      success.style.display =
+        "block";
+
+
+      document
+        .getElementById(
+          "demoOrderReference"
+        )
+        .innerHTML = `
+
+          <strong>
+          ${escapeHtml(
+            currentProduct.nom
+          )}
+          </strong>
+
+          <br>
+
+          Taille :
+          ${escapeHtml(taille)}
+
+          <br>
+
+          ${escapeHtml(delivery)}
+
+          <br><br>
+
+          Référence :
+          <strong>
+          ${reference}
+          </strong>
+
+          <br><br>
+
+          <span style="
+            color:#d5ad4a;
+          ">
+          MODE DÉMONSTRATION —
+          aucun débit bancaire.
+          </span>
+        `;
+
+    }
+  );
 init();
 
 </script>
