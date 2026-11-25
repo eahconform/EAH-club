@@ -1,2100 +1,3002 @@
+
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1"
->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="EAH Boutique de prêt à porter. Découvrez notre collection et les avantages exclusifs EAH Club.">
 
 <title>EAH Boutique | Club Privé</title>
 
-<meta
-  name="description"
-  content="EAH Boutique de prêt à porter - Collection, nouveautés et avantages Club."
->
+<link rel="dns-prefetch" href="//script.google.com">
+<link rel="dns-prefetch" href="//script.googleusercontent.com">
+<link rel="preconnect" href="https://script.google.com">
+<link rel="preconnect" href="https://script.googleusercontent.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-<link
-  rel="preconnect"
-  href="https://cdnjs.cloudflare.com"
->
-
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+media="print"
+onload="this.media='all'">
 
 <style>
 
-/* ============================================================
+/* ========================================
    BASE
-============================================================ */
+======================================== */
 
-:root{
-
-  --black:#070707;
-  --black2:#111111;
-
-  --gold:#d5ad4a;
-  --gold-light:#f5dc91;
-
-  --white:#f8f5ee;
-  --grey:#aaa;
-
-  --radius:22px;
+:root {
+  --black: #070707;
+  --black2: #111111;
+  --gold: #d5ad4a;
+  --gold-light: #f5dc91;
+  --white: #f8f5ee;
+  --grey: #aaa;
+  --radius: 22px;
 }
 
-*{
-  box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
 
-html{
-  scroll-behavior:smooth;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px;
 }
 
-body{
-
-  margin:0;
-
-  background:
-    radial-gradient(
-      circle at top,
-      #211b0d 0,
-      #090909 32%,
-      #050505 70%
-    );
-
-  color:white;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  overflow-x:hidden;
+body {
+  margin: 0;
+  background: radial-gradient(
+    circle at top,
+    #211b0d 0,
+    #090909 32%,
+    #050505 70%
+  );
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-button,
-input,
-select{
-  font:inherit;
+button, input, select {
+  font: inherit;
 }
 
+button {
+  cursor: pointer;
+}
 
-/* ============================================================
+button:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+/* ========================================
    NAVIGATION
-============================================================ */
+======================================== */
 
-nav{
-
-  position:fixed;
-
-  top:0;
-
-  left:0;
-
-  right:0;
-
-  z-index:1000;
-
-  display:flex;
-
-  justify-content:
-    space-between;
-
-  align-items:center;
-
-  padding:
-    18px
-    7%;
-
-  backdrop-filter:
-    blur(18px);
-
-  background:
-    rgba(
-      5,
-      5,
-      5,
-      .72
-    );
-
-  border-bottom:
-    1px solid
-    rgba(
-      213,
-      173,
-      74,
-      .18
-    );
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 7%;
+  background: rgba(5,5,5,.95);
+  border-bottom: 1px solid rgba(213,173,74,.18);
 }
 
-.logo{
-
-  font-family:
-    Georgia,
-    serif;
-
-  font-size:
-    clamp(
-      24px,
-      3vw,
-      36px
-    );
-
-  letter-spacing:
-    4px;
+.logo {
+  font-family: Georgia, serif;
+  font-size: clamp(24px,3vw,36px);
+  letter-spacing: 4px;
 }
 
-.logo span{
-  color:var(--gold);
+.logo span {
+  color: var(--gold);
 }
 
-.nav-links{
-
-  display:flex;
-
-  gap:24px;
-
-  font-size:14px;
-
-  text-transform:
-    uppercase;
-
-  letter-spacing:
-    1.5px;
+.nav-links {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
-.nav-links a{
-
-  transition:
-    color .3s;
+.nav-links a:hover {
+  color: var(--gold);
 }
 
-.nav-links a:hover{
-  color:var(--gold);
+/* ========================================
+   ACCUEIL
+======================================== */
+
+.hero {
+  min-height: 85vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 130px 7% 80px;
+  position: relative;
 }
 
-
-/* ============================================================
-   HERO
-============================================================ */
-
-.hero{
-
-  min-height:
-    100vh;
-
-  display:grid;
-
-  place-items:center;
-
-  text-align:center;
-
-  padding:
-    130px 7%
-    80px;
-
-  position:relative;
+.hero-content {
+  max-width: 900px;
+  z-index: 2;
 }
 
-.hero::after{
-
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-    linear-gradient(
-      transparent,
-      rgba(
-        0,
-        0,
-        0,
-        .7
-      )
-    );
-
-  pointer-events:none;
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
-.hero-content{
-
-  max-width:
-    900px;
-
-  z-index:2;
+h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(48px,8vw,100px);
+  line-height: .95;
+  margin: 25px 0;
 }
 
-.eyebrow{
-
-  color:var(--gold);
-
-  letter-spacing:
-    6px;
-
-  text-transform:
-    uppercase;
-
-  font-size:
-    12px;
+.hero p {
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto 35px;
+  line-height: 1.8;
+  font-size: 18px;
 }
 
-h1{
-
-  font-family:
-    Georgia,
-    serif;
-
-  font-weight:
-    400;
-
-  font-size:
-    clamp(
-      48px,
-      8vw,
-      100px
-    );
-
-  line-height:
-    .95;
-
-  margin:
-    25px 0;
-}
-
-.gold{
-  color:var(--gold);
-}
-
-.hero p{
-
-  color:#ccc;
-
-  max-width:
-    700px;
-
-  margin:
-    0 auto 35px;
-
-  line-height:
-    1.8;
-
-  font-size:
-    18px;
-}
-
-
-/* ============================================================
+/* ========================================
    BOUTONS
-============================================================ */
+======================================== */
 
-.btn{
-
-  border:0;
-
-  cursor:pointer;
-
-  padding:
-    15px 26px;
-
-  border-radius:
-    999px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #a87918,
-      #f3da8c,
-      #b17c1b
-    );
-
-  color:#080808;
-
-  font-weight:bold;
-
-  text-transform:
-    uppercase;
-
-  letter-spacing:
-    1.4px;
-
-  transition:
-    transform .3s,
-    box-shadow .3s;
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 0;
+  padding: 15px 26px;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    #a87918,
+    #f3da8c,
+    #b17c1b
+  );
+  color: #080808;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  text-align: center;
 }
 
-.btn:hover{
-
-  transform:
-    translateY(-3px);
-
-  box-shadow:
-    0 15px 40px
-    rgba(
-      213,
-      173,
-      74,
-      .23
-    );
+.btn:hover {
+  filter: brightness(1.08);
 }
 
-.btn-secondary{
-
-  background:
-    transparent;
-
-  border:
-    1px solid
-    var(--gold);
-
-  color:
-    var(--gold);
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
 }
 
-
-/* ============================================================
+/* ========================================
    SECTIONS
-============================================================ */
+======================================== */
 
-section{
-
-  padding:
-    90px 7%;
+section {
+  padding: 90px 7%;
 }
 
-.section-head{
-
-  text-align:center;
-
-  margin-bottom:
-    50px;
+.section-head {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
-.section-head small{
-
-  color:
-    var(--gold);
-
-  text-transform:
-    uppercase;
-
-  letter-spacing:
-    4px;
+.section-head small {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 
-.section-head h2{
-
-  font-family:
-    Georgia,
-    serif;
-
-  font-size:
-    clamp(
-      36px,
-      5vw,
-      60px
-    );
-
-  font-weight:
-    normal;
-
-  margin:
-    15px 0;
+.section-head h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(36px,5vw,60px);
+  font-weight: normal;
+  margin: 15px 0;
 }
 
-
-/* ============================================================
-   CLUB
-============================================================ */
-
-.club{
-
-  max-width:
-    1100px;
-
-  margin:
-    auto;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(
-        213,
-        173,
-        74,
-        .14
-      ),
-      rgba(
-        255,
-        255,
-        255,
-        .02
-      )
-    );
-
-  border:
-    1px solid
-    rgba(
-      213,
-      173,
-      74,
-      .35
-    );
-
-  border-radius:
-    30px;
-
-  padding:
-    40px;
-
-  box-shadow:
-    0 40px 100px
-    rgba(
-      0,
-      0,
-      0,
-      .5
-    );
+.section-head p {
+  color: #aaa;
 }
 
-.member-title{
+/* ========================================
+   ESPACE CLUB
+======================================== */
 
-  font-family:
-    Georgia,
-    serif;
-
-  font-size:
-    42px;
+.club {
+  max-width: 1100px;
+  margin: auto;
+  background: linear-gradient(
+    135deg,
+    rgba(213,173,74,.14),
+    rgba(255,255,255,.02)
+  );
+  border: 1px solid rgba(213,173,74,.35);
+  border-radius: 30px;
+  padding: 40px;
 }
 
-.member-card-number{
-
-  color:
-    var(--gold);
-
-  margin-top:
-    10px;
+.member-title {
+  font-family: Georgia, serif;
+  font-size: 42px;
 }
 
-.offers{
+.member-card-number {
+  color: var(--gold);
+  margin-top: 10px;
+}
 
-  display:grid;
-
+.offers {
+  display: grid;
   grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(
-        230px,
-        1fr
-      )
-    );
-
-  gap:
-    18px;
-
-  margin-top:
-    30px;
+    repeat(auto-fit,minmax(230px,1fr));
+  gap: 18px;
+  margin-top: 30px;
 }
 
-.offer{
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      .04
-    );
-
-  padding:
-    24px;
-
-  border-radius:
-    20px;
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      .08
-    );
+.offer {
+  background: rgba(255,255,255,.04);
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.08);
 }
 
-.offer i{
-
-  color:
-    var(--gold);
-
-  font-size:
-    25px;
-
-  margin-bottom:
-    15px;
+.offer i {
+  color: var(--gold);
+  font-size: 25px;
+  margin-bottom: 15px;
 }
 
-
-/* ============================================================
-   ACTIVATION
-============================================================ */
-
-.activation{
-
-  display:none;
-
-  max-width:
-    600px;
-
-  margin:
-    auto;
-
-  text-align:center;
+.activation {
+  display: none;
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
 }
 
-.form-field{
+/* ========================================
+   FORMULAIRES
+======================================== */
 
-  margin:
-    18px 0;
-
-  text-align:left;
+.form-field {
+  margin: 18px 0;
+  text-align: left;
 }
 
-.form-field label{
-
-  display:block;
-
-  color:#ddd;
-
-  margin-bottom:
-    7px;
+.form-field label {
+  display: block;
+  color: #ddd;
+  margin-bottom: 7px;
+  line-height: 1.5;
 }
 
-.form-field input,
-.form-field select{
-
-  width:100%;
-
-  padding:
-    15px;
-
-  border-radius:
-    12px;
-
-  border:
-    1px solid
-    rgba(
-      213,
-      173,
-      74,
-      .3
-    );
-
-  background:
-    #111;
-
-  color:white;
+.form-field input:not([type="checkbox"]),
+.form-field select {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(213,173,74,.3);
+  background: #111;
+  color: white;
 }
 
+.form-field input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold);
+  vertical-align: middle;
+  margin-right: 8px;
+}
 
-/* ============================================================
-   PRODUITS
-============================================================ */
+.form-field input:focus,
+.form-field select:focus {
+  outline: 1px solid var(--gold);
+}
 
-.products-grid{
+.message {
+  margin-top: 20px;
+  color: var(--gold-light);
+  line-height: 1.6;
+}
 
-  display:grid;
+/* ========================================
+   COLLECTION - PHOTOS FIXES
+======================================== */
 
+.products-grid {
+  display: grid;
   grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(
-        240px,
-        1fr
-      )
-    );
-
-  gap:
-    25px;
-
-  max-width:
-    1250px;
-
-  margin:auto;
+    repeat(4,minmax(0,1fr));
+  gap: 25px;
+  max-width: 1250px;
+  margin: auto;
 }
 
-.product{
-
-  border-radius:
-    var(--radius);
-
-  overflow:hidden;
-
-  background:
-    #0d0d0d;
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      .08
-    );
-
-  cursor:pointer;
-
-  transition:
-    transform .4s,
-    border-color .4s,
-    box-shadow .4s;
+.product {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,.08);
+  cursor: pointer;
+  transition: border-color .15s;
 }
 
-.product:hover{
-
-  transform:
-    translateY(-10px);
-
-  border-color:
-    var(--gold);
-
-  box-shadow:
-    0 25px 60px
-    rgba(
-      0,
-      0,
-      0,
-      .55
-    );
+.product:hover,
+.product:focus-visible {
+  border-color: var(--gold);
 }
 
-.product-image{
-
-  height:
-    330px;
-
-  overflow:hidden;
-
-  position:relative;
-
-  background:
-    #171717;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
+.product-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  position: relative;
+  background: #171717;
 }
 
-.product-image img{
-
-  width:100%;
-
-  height:100%;
-
-  object-fit:cover;
-
-  transition:
-    transform .7s;
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none;
+  animation: none;
 }
 
-.product:hover img{
-
-  transform:
-    scale(1.06);
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--gold);
+  color: #090909;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.badge{
-
-  position:absolute;
-
-  top:15px;
-
-  left:15px;
-
-  background:
-    var(--gold);
-
-  color:#090909;
-
-  border-radius:
-    999px;
-
-  padding:
-    7px 12px;
-
-  font-size:
-    11px;
-
-  font-weight:bold;
-
-  text-transform:
-    uppercase;
+.product-info {
+  padding: 20px;
 }
 
-.product-info{
-
-  padding:
-    20px;
+.product-category {
+  color: var(--gold);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 2px;
 }
 
-.product-category{
-
-  color:
-    var(--gold);
-
-  text-transform:
-    uppercase;
-
-  font-size:
-    11px;
-
-  letter-spacing:
-    2px;
+.product-name {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  margin: 10px 0;
 }
 
-.product-name{
-
-  font-family:
-    Georgia,
-    serif;
-
-  font-size:
-    23px;
-
-  margin:
-    10px 0;
+.product-price {
+  color: var(--gold-light);
+  font-size: 20px;
 }
 
-.product-price{
-
-  color:
-    var(--gold-light);
-
-  font-size:
-    20px;
+.product-details {
+  display: block;
+  margin-top: 15px;
+  font-size: 12px;
+  color: #aaa;
+  letter-spacing: .5px;
 }
 
-
-/* ============================================================
-   MODALE PRODUIT
-============================================================ */
-
-.modal{
-
-  display:none;
-
-  position:fixed;
-
-  inset:0;
-
-  background:
-    rgba(
-      0,
-      0,
-      0,
-      .88
-    );
-
-  z-index:
-    3000;
-
-  align-items:center;
-
-  justify-content:center;
-
-  padding:
-    20px;
+.catalog-status {
+  text-align: center;
+  color: #aaa;
+  margin: 20px auto;
+  line-height: 1.6;
 }
 
-.modal.open{
+/* ========================================
+   CHARGEMENT
+======================================== */
 
-  display:flex;
+.skeleton {
+  background: #151515;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #222;
 }
 
-.modal-content{
-
-  width:
-    min(
-      1000px,
-      96vw
-    );
-
-  max-height:
-    92vh;
-
-  overflow:auto;
-
-  background:
-    #0e0e0e;
-
-  border:
-    1px solid
-    rgba(
-      213,
-      173,
-      74,
-      .4
-    );
-
-  border-radius:
-    28px;
-
-  padding:
-    30px;
-
-  position:relative;
+.skeleton-image {
+  aspect-ratio: 3 / 4;
+  background: #1c1a15;
 }
 
-.close{
-
-  position:absolute;
-
-  top:15px;
-
-  right:20px;
-
-  border:none;
-
-  background:none;
-
-  color:white;
-
-  font-size:
-    30px;
-
-  cursor:pointer;
-
-  z-index:5;
+.skeleton-info {
+  padding: 20px;
 }
 
-.modal-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap:
-    40px;
+.skeleton-line {
+  height: 12px;
+  background: #292929;
+  border-radius: 8px;
+  margin: 12px 0;
 }
 
+/* ========================================
+   FICHE PRODUIT
+======================================== */
 
-/* ============================================================
-   EFFET ROTATION 360°
-============================================================ */
-
-.product-360{
-
-  height:
-    500px;
-
-  perspective:
-    1200px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.88);
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-.rotor{
-
-  position:relative;
-
-  width:
-    80%;
-
-  height:
-    90%;
-
-  transform-style:
-    preserve-3d;
-
-  animation:
-    rotateProduct
-    16s
-    linear
-    infinite;
+.modal.open {
+  display: flex;
 }
 
-.rotor img{
-
-  position:absolute;
-
-  inset:0;
-
-  width:100%;
-
-  height:100%;
-
-  object-fit:cover;
-
-  border-radius:
-    20px;
-
-  backface-visibility:
-    hidden;
+.modal-content {
+  width: min(1000px,96vw);
+  max-height: 92vh;
+  overflow: auto;
+  background: #0e0e0e;
+  border: 1px solid rgba(213,173,74,.4);
+  border-radius: 28px;
+  padding: 30px;
+  position: relative;
 }
 
-.rotor img.back{
-
-  transform:
-    rotateY(180deg);
+.close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #555;
+  border-radius: 50%;
+  background: #111;
+  color: white;
+  font-size: 27px;
+  z-index: 5;
 }
 
-@keyframes rotateProduct{
-
-  from{
-    transform:
-      rotateY(0deg);
-  }
-
-  to{
-    transform:
-      rotateY(360deg);
-  }
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
 }
 
+/* UNE SEULE PHOTO, AUCUNE ROTATION */
 
-/* ============================================================
-   SOCIAL
-============================================================ */
-
-.socials{
-
-  display:flex;
-
-  justify-content:center;
-
-  gap:
-    20px;
-
-  flex-wrap:wrap;
+.product-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #171717;
+  position: sticky;
+  top: 0;
 }
 
-.social{
-
-  width:60px;
-
-  height:60px;
-
-  border-radius:
-    50%;
-
-  display:grid;
-
-  place-items:center;
-
-  background:#111;
-
-  border:
-    1px solid
-    rgba(
-      213,
-      173,
-      74,
-      .4
-    );
-
-  font-size:
-    24px;
-
-  transition:
-    .3s;
+.product-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: none;
+  transform: none;
 }
 
-.social:hover{
-
-  background:
-    var(--gold);
-
-  color:#000;
-
-  transform:
-    translateY(-6px);
+.modal-title {
+  font-family: Georgia, serif;
+  font-size: 40px;
+  font-weight: normal;
+  margin: 15px 0;
 }
 
+.modal-description {
+  color: #bbb;
+  line-height: 1.8;
+}
 
-/* ============================================================
+hr {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 30px 0;
+}
+
+/* ========================================
+   PAIEMENT DEMONSTRATION
+======================================== */
+
+#demoCheckoutModal {
+  z-index: 3100;
+}
+
+.demo-content {
+  max-width: 650px;
+}
+
+.demo-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.demo-label {
+  display: inline-block;
+  padding: 7px 15px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.demo-summary {
+  background: #151515;
+  border: 1px solid rgba(213,173,74,.25);
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.demo-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.demo-success {
+  display: none;
+  text-align: center;
+  padding: 25px 0;
+  line-height: 1.8;
+}
+
+/* ========================================
+   RESEAUX SOCIAUX
+======================================== */
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.social {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #111;
+  border: 1px solid rgba(213,173,74,.4);
+  font-size: 24px;
+}
+
+.social:hover {
+  background: var(--gold);
+  color: #000;
+}
+
+/* ========================================
    FOOTER
-============================================================ */
+======================================== */
 
-footer{
-
-  border-top:
-    1px solid
-    rgba(
-      213,
-      173,
-      74,
-      .2
-    );
-
-  padding:
-    50px 7%;
-
-  text-align:center;
-
-  color:#999;
+footer {
+  border-top: 1px solid rgba(213,173,74,.2);
+  padding: 50px 7%;
+  text-align: center;
+  color: #999;
 }
 
+/* ========================================
+   TABLETTES ET MOBILES
+======================================== */
 
-/* ============================================================
-   ANIMATIONS
-============================================================ */
+@media(max-width:1100px) {
 
-.reveal{
-
-  opacity:0;
-
-  transform:
-    translateY(30px);
-
-  transition:
-    opacity .8s,
-    transform .8s;
-}
-
-.reveal.visible{
-
-  opacity:1;
-
-  transform:
-    translateY(0);
-}
-
-
-/* ============================================================
-   MOBILE
-============================================================ */
-
-@media(max-width:800px){
-
-  .nav-links{
-    display:none;
-  }
-
-  .modal-grid{
+  .products-grid {
     grid-template-columns:
-      1fr;
-  }
-
-  .product-360{
-    height:
-      390px;
-  }
-
-  section{
-    padding:
-      70px 5%;
+      repeat(3,minmax(0,1fr));
   }
 
 }
-</style>
 
+@media(max-width:800px) {
+
+  nav {
+    padding: 15px 5%;
+  }
+
+  .nav-links {
+    gap: 12px;
+    font-size: 10px;
+    letter-spacing: .5px;
+  }
+
+  .logo {
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+
+  .products-grid {
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+    gap: 15px;
+  }
+
+  .modal-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .product-photo {
+    position: relative;
+    max-height: 480px;
+  }
+
+  section {
+    padding: 65px 5%;
+  }
+
+  .club {
+    padding: 25px;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+}
+
+@media(max-width:480px) {
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero {
+    min-height: 75vh;
+    padding-top: 150px;
+  }
+
+  .product-info {
+    padding: 14px;
+  }
+
+  .product-name {
+    font-size: 18px;
+  }
+
+  .product-price {
+    font-size: 17px;
+  }
+
+  .product-category {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .badge {
+    top: 8px;
+    left: 8px;
+    font-size: 9px;
+    padding: 6px 8px;
+  }
+
+  .member-title {
+    font-size: 30px;
+  }
+
+  .modal {
+    padding: 8px;
+  }
+
+  .modal-title {
+    font-size: 30px;
+  }
+
+  .modal-content {
+    max-height: 95vh;
+  }
+
+  .modal-content .btn {
+    width: 100%;
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
+<!-- FORMULAIRE API INVISIBLE -->
 
-<!-- API -->
-<script>
-
-const API_URL =
-  "https://script.google.com/macros/s/AKfycbxc-fspODvWMbd1I2TRLnoC0f7RNp9oXXHJVJwLfNjL1J6vBonJlNSvJfkLIXXzMRoT/exec";
-
-</script>
-
-
-<!-- POST invisible -->
 <iframe
   name="eahApiFrame"
   id="eahApiFrame"
+  title="Communication avec la boutique"
   style="display:none">
 </iframe>
 
+<!-- NAVIGATION -->
 
 <nav>
 
-<div class="logo">
-EAH <span>BOUTIQUE</span>
-</div>
+  <a href="#" class="logo">
+    EAH <span>BOUTIQUE</span>
+  </a>
 
-<div class="nav-links">
-
-<a href="#collection">
-Collection
-</a>
-
-<a href="#club">
-Club
-</a>
-
-<a href="#social">
-Réseaux
-</a>
-
-</div>
+  <div class="nav-links">
+    <a href="#collection">Collection</a>
+    <a href="#club">Club</a>
+    <a href="#social">Réseaux</a>
+  </div>
 
 </nav>
 
+<!-- ACCUEIL -->
 
 <header class="hero">
 
-<div class="hero-content">
+  <div class="hero-content">
 
-<div class="eyebrow">
-EAH Boutique de prêt à porter
-</div>
+    <div class="eyebrow">
+      EAH Boutique de prêt à porter
+    </div>
 
-<h1>
-Votre style.<br>
-<span class="gold">
-Votre privilège.
-</span>
-</h1>
+    <h1>
+      Votre style.<br>
+      <span class="gold">Votre privilège.</span>
+    </h1>
 
-<p id="heroText">
-Découvrez nos nouveautés,
-nos pièces phares et
-les avantages exclusifs
-réservés aux membres
-EAH Club.
-</p>
+    <p id="heroText">
+      Découvrez nos nouveautés, nos pièces phares
+      et les avantages exclusifs réservés aux
+      membres EAH Club.
+    </p>
 
-<a
-  href="#collection"
-  class="btn"
->
-Découvrir la collection
-</a>
+    <a href="#collection" class="btn">
+      Découvrir la collection
+    </a>
 
-</div>
+  </div>
 
 </header>
 
+<!-- ESPACE CLUB -->
 
-<!-- CLUB -->
 <section id="club">
 
-<div class="section-head reveal">
+  <div class="section-head">
+    <small>EAH CLUB</small>
+    <h2>Vos avantages exclusifs</h2>
+  </div>
 
-<small>
-EAH CLUB
-</small>
+  <div class="club" id="clubBox">
 
-<h2>
-Vos avantages exclusifs
-</h2>
+    <div id="publicClub">
 
-</div>
+      <div class="member-title">
+        EAH Club
+      </div>
 
+      <p id="publicClubMessage">
+        Approchez votre carte NFC pour accéder
+        à votre espace personnel.
+      </p>
 
-<div
-  class="club reveal"
-  id="clubBox"
->
+    </div>
 
-<div id="publicClub">
+    <!-- ACTIVATION -->
 
-<div class="member-title">
-EAH Club
-</div>
+    <div id="activationBox" class="activation">
 
-<p>
-Approchez votre carte NFC
-pour accéder à votre
-espace personnel.
-</p>
+      <h3>Activez votre Carte Club</h3>
 
-</div>
+      <p>
+        Votre carte deviendra personnelle et
+        vous accompagnera sur n'importe quel
+        téléphone.
+      </p>
 
+      <form id="activationForm">
 
-<div
-  id="activationBox"
-  class="activation"
->
+        <div class="form-field">
 
-<h3>
-Activez votre Carte Club
-</h3>
+          <label for="activationPrenom">
+            Votre prénom
+          </label>
 
-<p>
-Votre carte deviendra
-personnelle et vous
-accompagnera sur
-n'importe quel téléphone.
-</p>
+          <input
+            id="activationPrenom"
+            autocomplete="given-name"
+            minlength="2"
+            maxlength="40"
+            required>
 
-<form id="activationForm">
+        </div>
 
-<div class="form-field">
+        <div class="form-field">
 
-<label>
-Votre prénom
-</label>
+          <label for="activationBirthday">
+            Anniversaire (JJ/MM)
+          </label>
 
-<input
-  id="activationPrenom"
-  required
->
+          <input
+            id="activationBirthday"
+            placeholder="14/06"
+            pattern="[0-9]{1,2}/[0-9]{1,2}"
+            maxlength="5"
+            required>
 
-</div>
+        </div>
 
-<div class="form-field">
+        <div class="form-field">
 
-<label>
-Anniversaire
-(JJ/MM)
-</label>
+          <label>
 
-<input
-  id="activationBirthday"
-  placeholder="14/06"
-  pattern="[0-9]{1,2}/[0-9]{1,2}"
-  required
->
+            <input
+              type="checkbox"
+              id="activationConsent"
+              required>
 
-</div>
+            J'accepte l'utilisation de ces
+            informations pour le fonctionnement
+            de ma Carte Club.
 
-<div class="form-field">
+          </label>
 
-<label>
+        </div>
 
-<input
-  type="checkbox"
-  id="activationConsent"
-  required
->
+        <button
+          class="btn"
+          id="activationButton"
+          type="submit">
 
-J'accepte l'utilisation
-de ces informations pour
-le fonctionnement de ma
-Carte Club.
+          Activer ma carte
 
-</label>
+        </button>
 
-</div>
+        <div
+          class="message"
+          id="activationMessage"
+          role="status">
+        </div>
 
-<button
-  class="btn"
-  type="submit"
->
-Activer ma carte
-</button>
+      </form>
 
-</form>
+    </div>
 
-</div>
+    <!-- MEMBRE -->
 
+    <div id="memberArea" style="display:none">
 
-<div
-  id="memberArea"
-  style="display:none"
->
+      <div
+        class="member-title"
+        id="memberHello">
+        Bonjour
+      </div>
 
-<div
-  class="member-title"
-  id="memberHello"
->
-Bonjour
-</div>
+      <div
+        class="member-card-number"
+        id="memberNumber">
+      </div>
 
-<div
-  class="member-card-number"
-  id="memberNumber"
-></div>
+      <div
+        class="offers"
+        id="memberOffers">
+      </div>
 
-<div
-  class="offers"
-  id="memberOffers"
-></div>
+    </div>
 
-</div>
-
-</div>
+  </div>
 
 </section>
-
 
 <!-- COLLECTION -->
+
 <section id="collection">
 
-<div class="section-head reveal">
+  <div class="section-head">
 
-<small>
-Sélection
-</small>
+    <small>Sélection</small>
 
-<h2>
-Nos pièces phares
-</h2>
+    <h2>Nos pièces phares</h2>
 
-<p>
-Découvrez notre sélection
-de 10 articles.
-</p>
+    <p id="collectionText">
+      Découvrez notre collection.
+    </p>
 
-</div>
+  </div>
 
-<div
-  id="productsGrid"
-  class="products-grid"
->
-</div>
+  <div
+    id="catalogStatus"
+    class="catalog-status"
+    role="status">
+  </div>
+
+  <div
+    id="productsGrid"
+    class="products-grid">
+  </div>
 
 </section>
 
+<!-- RESEAUX -->
 
-<!-- SOCIAL -->
 <section id="social">
 
-<div class="section-head reveal">
+  <div class="section-head">
 
-<small>
-Suivez-nous
-</small>
+    <small>Suivez-nous</small>
 
-<h2>
-Notre univers
-</h2>
+    <h2>Notre univers</h2>
 
-</div>
+  </div>
 
-<div
-  class="socials reveal"
-  id="socialLinks"
->
-</div>
+  <div
+    class="socials"
+    id="socialLinks">
+  </div>
 
 </section>
 
+<!-- FOOTER -->
 
 <footer>
 
-<div class="logo">
-EAH <span>BOUTIQUE</span>
-</div>
+  <div class="logo">
+    EAH <span>BOUTIQUE</span>
+  </div>
 
-<p id="footerAddress">
-Lyon, France
-</p>
+  <p id="footerAddress">
+    Lyon, France
+  </p>
 
-<p id="footerHours">
-Lundi - Samedi
-</p>
+  <p id="footerHours">
+    Lundi - Samedi
+  </p>
 
 </footer>
 
+<!-- FICHE PRODUIT -->
 
-<!-- MODALE PRODUIT -->
 <div
   id="productModal"
   class="modal"
->
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalName">
 
-<div class="modal-content">
+  <div class="modal-content">
 
-<button
-  class="close"
-  onclick="closeModal()"
->
-×
-</button>
+    <button
+      class="close"
+      type="button"
+      aria-label="Fermer"
+      onclick="closeModal()">
+      ×
+    </button>
 
-<div class="modal-grid">
+    <div class="modal-grid">
 
-<div class="product-360">
+      <!-- PHOTO FIXE -->
 
-<div
-  class="rotor"
-  id="productRotor"
->
+      <div class="product-photo">
 
-<img
-  id="modalImageFront"
-  alt=""
->
+        <img
+          id="modalImage"
+          width="900"
+          height="1200"
+          decoding="async"
+          alt="">
 
-<img
-  id="modalImageBack"
-  class="back"
-  alt=""
->
+      </div>
 
-</div>
+      <div>
 
-</div>
+        <div
+          class="product-category"
+          id="modalCategory">
+        </div>
 
+        <h2
+          class="modal-title"
+          id="modalName">
+        </h2>
 
-<div>
+        <div
+          class="product-price"
+          id="modalPrice">
+        </div>
 
-<div
-  class="product-category"
-  id="modalCategory"
-></div>
+        <p
+          class="modal-description"
+          id="modalDescription">
+        </p>
 
-<h2
-  id="modalName"
-  style="
-    font-family:Georgia,serif;
-    font-size:40px;
-  "
-></h2>
+        <hr>
 
-<div
-  id="modalPrice"
-  class="product-price"
-></div>
+        <button
+          type="button"
+          class="btn"
+          id="demoBuyButton">
 
-<p
-  id="modalDescription"
-  style="
-    color:#bbb;
-    line-height:1.8;
-  "
-></p>
+          <i class="fa-solid fa-bag-shopping"></i>
 
+          Acheter maintenant
 
-<hr
-  style="
-    border:none;
-    border-top:
-      1px solid #333;
-    margin:30px 0;
-  "
->
+        </button>
 
-<div style="margin:25px 0;">
+        <hr>
 
-<button
-  type="button"
-  class="btn"
-  id="demoBuyButton"
->
-  <i class="fa-solid fa-bag-shopping"></i>
-  Acheter maintenant
-</button>
+        <h3>Réserver cet article 24h</h3>
 
-</div>
-<h3>
-Réserver cet article 24h
-</h3>
+        <form id="reservationForm">
 
-<form id="reservationForm">
+          <input
+            type="hidden"
+            id="reservationProductId">
 
-<input
-  type="hidden"
-  id="reservationProductId"
->
+          <div class="form-field">
 
-<div class="form-field">
+            <label for="reservationSize">
+              Taille
+            </label>
 
-<label>
-Taille
-</label>
+            <select
+              id="reservationSize"
+              required>
+            </select>
 
-<select
-  id="reservationSize"
-  required
-></select>
+          </div>
 
-</div>
+          <div class="form-field">
 
+            <label for="reservationFirstName">
+              Prénom
+            </label>
 
-<div class="form-field">
+            <input
+              id="reservationFirstName"
+              autocomplete="given-name"
+              required>
 
-<label>
-Prénom
-</label>
+          </div>
 
-<input
-  id="reservationFirstName"
-  required
->
+          <div class="form-field">
 
-</div>
+            <label for="reservationLastName">
+              Nom
+            </label>
 
+            <input
+              id="reservationLastName"
+              autocomplete="family-name"
+              required>
 
-<div class="form-field">
+          </div>
 
-<label>
-Nom
-</label>
+          <div class="form-field">
 
-<input
-  id="reservationLastName"
-  required
->
+            <label for="reservationPhone">
+              Téléphone
+            </label>
 
-</div>
+            <input
+              id="reservationPhone"
+              type="tel"
+              autocomplete="tel"
+              minlength="8"
+              required>
 
+          </div>
 
-<div class="form-field">
+          <div class="form-field">
 
-<label>
-Téléphone
-</label>
+            <label for="reservationEmail">
+              E-mail
+            </label>
 
-<input
-  id="reservationPhone"
-  type="tel"
-  required
->
+            <input
+              id="reservationEmail"
+              type="email"
+              autocomplete="email"
+              placeholder="votre@email.fr"
+              required>
 
-</div>
-<div class="form-field">
+          </div>
 
-<label>
-E-mail
-</label>
+          <div class="form-field">
 
-<input
-  id="reservationEmail"
-  type="email"
-  placeholder="votre@email.fr"
-  required
->
+            <label>
 
-</div>
+              <input
+                id="reservationConsent"
+                type="checkbox"
+                required>
 
-<div class="form-field">
+              J'accepte d'être contacté par
+              la boutique concernant cette
+              réservation.
 
-<label>
+            </label>
 
-<input
-  id="reservationConsent"
-  type="checkbox"
-  required
->
+          </div>
 
-J'accepte d'être contacté
-par la boutique concernant
-cette réservation.
+          <button
+            class="btn"
+            id="reservationButton"
+            type="submit">
 
-</label>
+            Réserver pendant 24h
 
-</div>
+          </button>
 
+        </form>
 
-<button
-  type="submit"
-  class="btn"
->
-Réserver pendant 24h
-</button>
+        <div
+          id="reservationMessage"
+          class="message"
+          role="status">
+        </div>
 
-</form>
+      </div>
 
+    </div>
 
-<div
-  id="reservationMessage"
-  style="
-    margin-top:20px;
-    color:#f5dc91;
-  "
-></div>
+  </div>
 
 </div>
 
-</div>
-
-</div>
-
-</div>
-<!-- =========================================================
-     PAIEMENT DEMO
-========================================================= -->
+<!-- PAIEMENT DEMONSTRATION -->
 
 <div
   id="demoCheckoutModal"
   class="modal"
->
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="demoTitle">
 
-<div class="modal-content" style="max-width:650px;">
+  <div class="modal-content demo-content">
 
-<button
-  class="close"
-  type="button"
-  onclick="closeDemoCheckout()"
->
-×
-</button>
+    <button
+      class="close"
+      type="button"
+      aria-label="Fermer"
+      onclick="closeDemoCheckout()">
+      ×
+    </button>
 
-<div style="text-align:center;margin-bottom:30px;">
+    <div class="demo-header">
 
-<div style="
-  display:inline-block;
-  padding:7px 15px;
-  border:1px solid #d5ad4a;
-  border-radius:999px;
-  color:#d5ad4a;
-  font-size:12px;
-  letter-spacing:2px;
-  margin-bottom:15px;
-">
-MODE DÉMONSTRATION
-</div>
+      <div class="demo-label">
+        MODE DÉMONSTRATION
+      </div>
 
-<h2 style="
-  font-family:Georgia,serif;
-  font-size:38px;
-  margin:10px 0;
-">
-Paiement sécurisé
-</h2>
+      <h2
+        class="modal-title"
+        id="demoTitle">
+        Paiement sécurisé
+      </h2>
 
-<p style="color:#aaa;">
-Simulation uniquement — aucun paiement réel ne sera effectué.
-</p>
+      <p style="color:#aaa">
+        Simulation uniquement — aucun paiement
+        réel ne sera effectué.
+      </p>
 
-</div>
+    </div>
 
+    <div
+      id="demoOrderSummary"
+      class="demo-summary">
+    </div>
 
-<div
-  id="demoOrderSummary"
-  style="
-    background:#151515;
-    border:1px solid rgba(213,173,74,.25);
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:25px;
-  "
->
-</div>
+    <form id="demoCheckoutForm">
 
+      <div class="form-field">
 
-<form id="demoCheckoutForm">
+        <label for="demoCheckoutSize">
+          Taille
+        </label>
 
-<div class="form-field">
+        <select
+          id="demoCheckoutSize"
+          required>
+        </select>
 
-<label>
-Taille
-</label>
+      </div>
 
-<select
-  id="demoCheckoutSize"
-  required
-></select>
+      <div class="form-field">
 
-</div>
+        <label for="demoCheckoutFirstName">
+          Prénom
+        </label>
 
+        <input
+          id="demoCheckoutFirstName"
+          autocomplete="given-name"
+          required>
 
-<div class="form-field">
+      </div>
 
-<label>
-Prénom
-</label>
+      <div class="form-field">
 
-<input
-  id="demoCheckoutFirstName"
-  required
->
+        <label for="demoCheckoutLastName">
+          Nom
+        </label>
 
-</div>
+        <input
+          id="demoCheckoutLastName"
+          autocomplete="family-name"
+          required>
 
+      </div>
 
-<div class="form-field">
+      <div class="form-field">
 
-<label>
-Nom
-</label>
+        <label for="demoCheckoutEmail">
+          E-mail
+        </label>
 
-<input
-  id="demoCheckoutLastName"
-  required
->
+        <input
+          id="demoCheckoutEmail"
+          type="email"
+          autocomplete="email"
+          required>
 
-</div>
+      </div>
 
+      <div class="form-field">
 
-<div class="form-field">
+        <label for="demoDeliveryMode">
+          Mode de réception
+        </label>
 
-<label>
-E-mail
-</label>
+        <select id="demoDeliveryMode" required>
 
-<input
-  id="demoCheckoutEmail"
-  type="email"
-  required
->
+          <option value="Retrait en boutique">
+            Retrait en boutique
+          </option>
 
-</div>
+          <option value="Livraison à domicile">
+            Livraison à domicile
+          </option>
 
+        </select>
 
-<div class="form-field">
+      </div>
 
-<label>
-Mode de réception
-</label>
+      <button
+        type="submit"
+        class="btn"
+        style="width:100%">
 
-<select id="demoDeliveryMode">
+        Simuler le paiement
 
-<option value="Retrait boutique">
-Retrait en boutique
-</option>
+      </button>
 
-<option value="Livraison">
-Livraison à domicile — Démo
-</option>
+    </form>
 
-</select>
+    <div
+      id="demoPaymentSuccess"
+      class="demo-success">
 
-</div>
+      <div style="font-size:45px;color:#d5ad4a">
+        ✓
+      </div>
 
+      <h2>Commande simulée avec succès</h2>
 
-<div style="
-  margin-top:30px;
-  padding:22px;
-  border-radius:18px;
-  background:#0a0a0a;
-  border:1px solid rgba(255,255,255,.1);
-">
+      <div id="demoOrderReference"></div>
 
-<div style="
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:15px;
-">
+      <button
+        type="button"
+        class="btn"
+        onclick="closeDemoCheckout()">
 
-<strong>
-Carte bancaire
-</strong>
+        Continuer mes achats
 
-<span style="color:#d5ad4a;">
-DÉMO
-</span>
+      </button>
 
-</div>
+    </div>
 
-
-<div class="form-field">
-
-<label>
-Numéro de carte fictif
-</label>
-
-<input
-  value="4242 4242 4242 4242"
-  readonly
->
-
-</div>
-
-
-<div style="
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-">
-
-<div class="form-field">
-
-<label>
-Expiration
-</label>
-
-<input
-  value="12/30"
-  readonly
->
-
-</div>
-
-
-<div class="form-field">
-
-<label>
-CVC
-</label>
-
-<input
-  value="123"
-  readonly
->
-
-</div>
-
-</div>
-
-<p style="
-  font-size:12px;
-  color:#888;
-">
-Ces informations sont fictives et servent uniquement à la démonstration.
-</p>
-
-</div>
-
-
-<button
-  type="submit"
-  class="btn"
-  style="
-    width:100%;
-    margin-top:25px;
-    font-size:16px;
-  "
->
-SIMULER LE PAIEMENT
-</button>
-
-</form>
-
-
-<div
-  id="demoPaymentSuccess"
-  style="
-    display:none;
-    text-align:center;
-    padding:35px 15px;
-  "
->
-
-<div style="
-  font-size:65px;
-  margin-bottom:20px;
-">
-✓
-</div>
-
-<h2 style="
-  color:#d5ad4a;
-  font-family:Georgia,serif;
-">
-Commande simulée avec succès
-</h2>
-
-<p>
-Aucun paiement réel n'a été effectué.
-</p>
-
-<p id="demoOrderReference"></p>
-
-<button
-  class="btn"
-  onclick="closeDemoCheckout()"
->
-Continuer mes achats
-</button>
-
-</div>
-
-</div>
+  </div>
 
 </div>
 
 <script>
 
-/* ============================================================
-   VARIABLES
-============================================================ */
+/* ========================================
+   CONFIGURATION
+======================================== */
+
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbxc-fspODvWMbd1I2TRLnoC0f7RNp9oXXHJVJwLfNjL1J6vBonJlNSvJfkLIXXzMRoT/exec";
 
 const CARD_TOKEN =
-  new URLSearchParams(
-    location.search
-  ).get("card") || "";
+  new URLSearchParams(window.location.search)
+    .get("card") || "";
 
-let currentCard = null;
+const CACHE_KEY = "EAH_PUBLIC_CATALOG_V3";
 
-let products = [];
-
-let offers = [];
+const CACHE_DURATION = 5 * 60 * 1000;
 
 let shop = {};
+let products = [];
+let offers = [];
+let currentCard = null;
 let currentProduct = null;
 
-/* ============================================================
-   JSONP GET
-============================================================ */
+let catalogVerified = false;
+let catalogSignature = "";
+let reservationPending = false;
+let callbackCounter = 0;
 
-function apiGet(
-  action,
-  params = {}
-){
+const $ = id => document.getElementById(id);
 
-  return new Promise(
-    (resolve, reject) => {
+/* ========================================
+   API GOOGLE APPS SCRIPT
+   COMPATIBLE JSONP
+======================================== */
 
-      const callback =
-        "eahCallback_" +
-        Date.now() +
-        "_" +
-        Math.floor(
-          Math.random() *
-          99999
+function apiGet(action, params = {}) {
+
+  return new Promise((resolve, reject) => {
+
+    const callbackName =
+      "eahCallback_" +
+      Date.now() +
+      "_" +
+      (++callbackCounter);
+
+    const script =
+      document.createElement("script");
+
+    const url = new URL(API_URL);
+
+    url.searchParams.set("action", action);
+
+    url.searchParams.set(
+      "callback",
+      callbackName
+    );
+
+    Object.entries(params).forEach(
+      ([key, value]) => {
+
+        url.searchParams.set(
+          key,
+          String(value ?? "")
         );
 
-      const script =
-        document
-          .createElement(
-            "script"
-          );
+      }
+    );
 
-      window[callback] =
-        function(data){
+    let finished = false;
 
-          delete window[
-            callback
-          ];
+    const cleanup = () => {
 
-          script.remove();
+      clearTimeout(timer);
 
-          resolve(data);
-        };
+      script.remove();
 
-      const query =
-        new URLSearchParams({
-          action,
-          callback,
-          ...params
-        });
+      delete window[callbackName];
 
-      script.src =
-        API_URL +
-        "?" +
-        query.toString();
+    };
 
-      script.onerror =
-        function(){
+    window[callbackName] = data => {
 
-          delete window[
-            callback
-          ];
+      if (finished) return;
 
-          script.remove();
+      finished = true;
 
-          reject(
-            new Error(
-              "Erreur API"
-            )
-          );
-        };
+      cleanup();
 
-      document
-        .body
-        .appendChild(
-          script
-        );
-    }
-  );
+      resolve(data);
+
+    };
+
+    script.onerror = () => {
+
+      if (finished) return;
+
+      finished = true;
+
+      cleanup();
+
+      reject(
+        new Error("Connexion API impossible")
+      );
+
+    };
+
+    const timer = setTimeout(() => {
+
+      if (finished) return;
+
+      finished = true;
+
+      cleanup();
+
+      reject(
+        new Error("Délai API dépassé")
+      );
+
+    }, 25000);
+
+    script.src = url.toString();
+
+    script.async = true;
+
+    document.head.appendChild(script);
+
+  });
+
 }
 
-
-/* ============================================================
-   POST SANS CORS
-============================================================ */
-
-function apiPost(data){
+function apiPost(data) {
 
   const form =
-    document
-      .createElement(
-        "form"
-      );
+    document.createElement("form");
 
-  form.method =
-    "POST";
+  form.method = "POST";
 
-  form.action =
-    API_URL;
+  form.action = API_URL;
 
-  form.target =
-    "eahApiFrame";
+  form.target = "eahApiFrame";
 
-  form.style.display =
-    "none";
+  form.style.display = "none";
 
-  Object.entries(
-    data
-  ).forEach(
-    ([key,value]) => {
+  Object.entries(data).forEach(
+    ([key, value]) => {
 
       const input =
-        document
-          .createElement(
-            "input"
-          );
+        document.createElement("input");
 
-      input.type =
-        "hidden";
+      input.type = "hidden";
 
-      input.name =
-        key;
+      input.name = key;
 
-      input.value =
-        value ?? "";
+      input.value = String(value ?? "");
 
-      form.appendChild(
-        input
-      );
+      form.appendChild(input);
+
     }
   );
 
-  document
-    .body
-    .appendChild(
-      form
-    );
+  document.body.appendChild(form);
 
   form.submit();
 
-  setTimeout(
-    () => form.remove(),
-    1500
-  );
+  setTimeout(() => form.remove(), 1000);
+
 }
 
+/* ========================================
+   OUTILS
+======================================== */
 
-/* ============================================================
-   CHARGEMENT
-============================================================ */
+function wait(ms) {
 
-async function init(){
+  return new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
 
-  try{
+}
 
-    const data =
-      await apiGet(
-        "bootstrap",
-        {
-          card:
-            CARD_TOKEN
-        }
-      );
+function escapeHtml(value) {
 
-    if(!data.ok){
-      throw new Error(
-        data.error
-      );
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+}
+
+function escapeAttr(value) {
+
+  return escapeHtml(value);
+
+}
+
+function safeUrl(value) {
+
+  try {
+
+    const url = new URL(
+      String(value || ""),
+      document.baseURI
+    );
+
+    if (
+      url.protocol === "https:" ||
+      url.protocol === "http:"
+    ) {
+
+      return url.href;
+
     }
 
-    shop =
-      data.shop || {};
+  } catch (err) {}
 
-    products =
-      data.products || [];
+  return "";
 
-    offers =
-      data.offers || [];
+}
 
-    currentCard =
-      data.card || null;
+function getSizes(product) {
+
+  const sizes = Array.isArray(product.tailles)
+    ? product.tailles
+    : String(product.tailles || "").split("|");
+
+  return sizes
+    .map(size => String(size).trim())
+    .filter(Boolean);
+
+}
+
+/* ========================================
+   ASSOCIATION AUTOMATIQUE DES PHOTOS
+======================================== */
+
+function slugify(value) {
+
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+}
+
+function getProductImage(product) {
+
+  const image =
+    String(product.image || "").trim();
+
+  const filename =
+    slugify(product.nom) + ".webp";
+
+  const automaticPath =
+    "assets/" + filename;
+
+  /*
+    Les anciens chemins produit-01.webp
+    sont remplacés automatiquement.
+
+    Les nouveaux chemins personnalisés
+    renseignés dans Google Sheets restent
+    utilisables.
+  */
+
+  if (
+    !image ||
+    /^(\.\/)?assets\/produit-\d+\.webp$/i
+      .test(image)
+  ) {
+
+    return automaticPath;
+
+  }
+
+  return safeUrl(image) || automaticPath;
+
+}
+
+/* ========================================
+   IMAGE DE SECOURS
+======================================== */
+
+function placeholderImage(name) {
+
+  const text = escapeHtml(name);
+
+  const svg = `
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="900"
+      height="1200"
+      viewBox="0 0 900 1200">
+
+      <defs>
+
+        <linearGradient
+          id="g"
+          x1="0"
+          y1="0"
+          x2="1"
+          y2="1">
+
+          <stop
+            offset="0"
+            stop-color="#080808"/>
+
+          <stop
+            offset="1"
+            stop-color="#31240a"/>
+
+        </linearGradient>
+
+      </defs>
+
+      <rect
+        width="900"
+        height="1200"
+        fill="url(#g)"/>
+
+      <text
+        x="450"
+        y="550"
+        text-anchor="middle"
+        fill="#d5ad4a"
+        font-family="Georgia"
+        font-size="65">
+        EAH
+      </text>
+
+      <text
+        x="450"
+        y="630"
+        text-anchor="middle"
+        fill="#f8f5ee"
+        font-family="Arial"
+        font-size="28">
+        ${text}
+      </text>
+
+    </svg>
+  `;
+
+  return (
+    "data:image/svg+xml;charset=UTF-8," +
+    encodeURIComponent(svg)
+  );
+
+}
+
+function configureImage(img, product) {
+
+  img.alt = product.nom || "Article EAH";
+
+  img.onerror = () => {
+
+    img.onerror = null;
+
+    img.src = placeholderImage(product.nom);
+
+  };
+
+  img.src = getProductImage(product);
+
+}
+
+/* ========================================
+   CACHE PUBLIC DU CATALOGUE
+
+   Aucune donnée personnelle ni carte NFC
+   n'est enregistrée dans ce cache.
+======================================== */
+
+function saveCatalogCache() {
+
+  try {
+
+    const publicProducts = products.map(
+      product => ({
+
+        id: product.id,
+        nom: product.nom,
+        categorie: product.categorie,
+        prix: product.prix,
+        description: product.description,
+        tailles: getSizes(product),
+        image: product.image,
+        badge: product.badge
+
+      })
+    );
+
+    const publicShop = {};
+
+    [
+      "HERO_TEXTE",
+      "ADRESSE",
+      "HORAIRES",
+      "INSTAGRAM",
+      "FACEBOOK",
+      "TIKTOK",
+      "GOOGLE_AVIS"
+    ].forEach(key => {
+
+      publicShop[key] = shop[key] || "";
+
+    });
+
+    localStorage.setItem(
+      CACHE_KEY,
+      JSON.stringify({
+
+        timestamp: Date.now(),
+        products: publicProducts,
+        shop: publicShop
+
+      })
+    );
+
+  } catch (err) {
+
+    console.warn("Cache indisponible");
+
+  }
+
+}
+
+function readCatalogCache() {
+
+  try {
+
+    const raw =
+      localStorage.getItem(CACHE_KEY);
+
+    if (!raw) return null;
+
+    const cache = JSON.parse(raw);
+
+    if (!Array.isArray(cache.products)) {
+
+      return null;
+
+    }
+
+    if (
+      Date.now() - cache.timestamp >
+      CACHE_DURATION
+    ) {
+
+      return null;
+
+    }
+
+    return cache;
+
+  } catch (err) {
+
+    return null;
+
+  }
+
+}
+
+/* ========================================
+   CHARGEMENT VISUEL
+======================================== */
+
+function renderSkeleton() {
+
+  $("productsGrid").innerHTML =
+    Array.from({length: 4}, () => `
+
+      <div class="skeleton">
+
+        <div class="skeleton-image"></div>
+
+        <div class="skeleton-info">
+
+          <div
+            class="skeleton-line"
+            style="width:45%">
+          </div>
+
+          <div
+            class="skeleton-line"
+            style="width:85%">
+          </div>
+
+          <div
+            class="skeleton-line"
+            style="width:35%">
+          </div>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+}
+
+/* ========================================
+   AFFICHAGE BOUTIQUE
+======================================== */
+
+function renderShop() {
+
+  if (shop.HERO_TEXTE) {
+
+    $("heroText").textContent =
+      shop.HERO_TEXTE;
+
+  }
+
+  $("footerAddress").textContent =
+    shop.ADRESSE || "Lyon, France";
+
+  $("footerHours").textContent =
+    shop.HORAIRES || "Lundi - Samedi";
+
+  const socials = [
+
+    {
+      icon: "fa-brands fa-instagram",
+      label: "Instagram",
+      url: shop.INSTAGRAM
+    },
+
+    {
+      icon: "fa-brands fa-facebook-f",
+      label: "Facebook",
+      url: shop.FACEBOOK
+    },
+
+    {
+      icon: "fa-brands fa-tiktok",
+      label: "TikTok",
+      url: shop.TIKTOK
+    },
+
+    {
+      icon: "fa-brands fa-google",
+      label: "Avis Google",
+      url: shop.GOOGLE_AVIS
+    }
+
+  ];
+
+  const container = $("socialLinks");
+
+  container.innerHTML = "";
+
+  socials.forEach(item => {
+
+    if (!item.url) return;
+
+    const url = safeUrl(item.url);
+
+    if (!url) return;
+
+    const a = document.createElement("a");
+
+    a.className = "social";
+
+    a.href = url;
+
+    a.target = "_blank";
+
+    a.rel = "noopener noreferrer";
+
+    a.setAttribute("aria-label", item.label);
+
+    a.title = item.label;
+
+    a.innerHTML =
+      `<i class="${item.icon}"></i>`;
+
+    container.appendChild(a);
+
+  });
+
+}
+
+/* ========================================
+   AFFICHAGE DES ARTICLES
+======================================== */
+
+function renderProducts() {
+
+  const signature = JSON.stringify(products);
+
+  $("collectionText").textContent =
+    `Découvrez notre sélection de ${products.length} article${products.length > 1 ? "s" : ""}.`;
+
+  if (signature === catalogSignature) {
+
+    return;
+
+  }
+
+  catalogSignature = signature;
+
+  const grid = $("productsGrid");
+
+  grid.innerHTML = "";
+
+  if (!products.length) {
+
+    $("catalogStatus").textContent =
+      "Aucun article disponible actuellement.";
+
+    return;
+
+  }
+
+  const fragment =
+    document.createDocumentFragment();
+
+  products.forEach((product, index) => {
+
+    const article =
+      document.createElement("article");
+
+    article.className = "product";
+
+    article.tabIndex = 0;
+
+    article.setAttribute("role", "button");
+
+    article.setAttribute(
+      "aria-label",
+      "Découvrir " + product.nom
+    );
+
+    article.innerHTML = `
+
+      <div class="product-image">
+
+        <img
+          width="900"
+          height="1200"
+          decoding="async"
+          loading="${index < 4 ? "eager" : "lazy"}"
+          fetchpriority="${index === 0 ? "high" : "auto"}"
+          alt="${escapeAttr(product.nom)}">
+
+        ${product.badge ? `
+
+          <div class="badge">
+            ${escapeHtml(product.badge)}
+          </div>
+
+        ` : ""}
+
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-category">
+          ${escapeHtml(product.categorie)}
+        </div>
+
+        <div class="product-name">
+          ${escapeHtml(product.nom)}
+        </div>
+
+        <div class="product-price">
+          ${escapeHtml(product.prix)}
+        </div>
+
+        <span class="product-details">
+          Découvrir l'article →
+        </span>
+
+      </div>
+
+    `;
+
+    const img = article.querySelector("img");
+
+    configureImage(img, product);
+
+    article.addEventListener("click", () => {
+
+      openProduct(product);
+
+    });
+
+    article.addEventListener("keydown", e => {
+
+      if (e.key === "Enter" || e.key === " ") {
+
+        e.preventDefault();
+
+        openProduct(product);
+
+      }
+
+    });
+
+    fragment.appendChild(article);
+
+  });
+
+  grid.appendChild(fragment);
+
+}
+
+/* ========================================
+   AFFICHAGE ESPACE CLUB
+======================================== */
+
+function renderClub() {
+
+  $("publicClub").style.display = "none";
+
+  $("activationBox").style.display = "none";
+
+  $("memberArea").style.display = "none";
+
+  if (!CARD_TOKEN) {
+
+    $("publicClub").style.display = "block";
+
+    return;
+
+  }
+
+  if (!currentCard) {
+
+    $("publicClub").style.display = "block";
+
+    $("publicClub").innerHTML = `
+
+      <div class="member-title">
+        EAH Club
+      </div>
+
+      <p>
+        Vérification de votre carte en cours
+        ou connexion indisponible.
+      </p>
+
+    `;
+
+    return;
+
+  }
+
+  if (!currentCard.exists) {
+
+    $("publicClub").style.display = "block";
+
+    $("publicClub").innerHTML = `
+
+      <div class="member-title">
+        Carte inconnue
+      </div>
+
+      <p>
+        Cette carte n'est pas reconnue
+        par le système.
+      </p>
+
+    `;
+
+    return;
+
+  }
+
+  if (currentCard.blocked) {
+
+    $("publicClub").style.display = "block";
+
+    $("publicClub").innerHTML = `
+
+      <div class="member-title">
+        Carte désactivée
+      </div>
+
+      <p>
+        Cette carte Club a été désactivée.
+        Veuillez contacter la boutique.
+      </p>
+
+    `;
+
+    return;
+
+  }
+
+  if (currentCard.lost) {
+
+    $("publicClub").style.display = "block";
+
+    $("publicClub").innerHTML = `
+
+      <div class="member-title">
+        Carte non valide
+      </div>
+
+      <p>
+        Cette carte a été déclarée perdue.
+        Veuillez contacter la boutique.
+      </p>
+
+    `;
+
+    return;
+
+  }
+
+  if (!currentCard.active) {
+
+    $("activationBox").style.display = "block";
+
+    return;
+
+  }
+
+  $("memberArea").style.display = "block";
+
+  $("memberHello").textContent =
+    "Bonjour " + currentCard.prenom + " 👋";
+
+  $("memberNumber").textContent =
+    "Carte Club N°" + currentCard.numero;
+
+  const box = $("memberOffers");
+
+  box.innerHTML = "";
+
+  offers.forEach(offer => {
+
+    if (
+      offer.type === "ANNIVERSAIRE" &&
+      !currentCard.birthdayMonth
+    ) {
+
+      return;
+
+    }
+
+    const div =
+      document.createElement("div");
+
+    div.className = "offer";
+
+    const icon =
+      offer.type === "ANNIVERSAIRE"
+        ? "fa-gift"
+        : "fa-tag";
+
+    div.innerHTML = `
+
+      <i class="fa-solid ${icon}"></i>
+
+      <h3>
+        ${escapeHtml(offer.titre)}
+      </h3>
+
+      <p>
+        ${escapeHtml(offer.description)}
+      </p>
+
+    `;
+
+    box.appendChild(div);
+
+  });
+
+}
+
+/* ========================================
+   ACTIVATION CARTE NFC
+======================================== */
+
+$("activationForm").addEventListener(
+  "submit",
+  async e => {
+
+    e.preventDefault();
+
+    const button = $("activationButton");
+
+    const message = $("activationMessage");
+
+    if (button.disabled) return;
+
+    const prenom =
+      $("activationPrenom").value.trim();
+
+    const anniversaire =
+      $("activationBirthday").value.trim();
+
+    const consent =
+      $("activationConsent").checked;
+
+    if (!consent || !CARD_TOKEN) return;
+
+    button.disabled = true;
+
+    message.textContent =
+      "Activation de votre carte en cours...";
+
+    try {
+
+      apiPost({
+
+        action: "activate",
+        card: CARD_TOKEN,
+        prenom,
+        anniversaire,
+        consentement: "true"
+
+      });
+
+      for (let i = 0; i < 12; i++) {
+
+        await wait(900);
+
+        let result;
+
+        try {
+
+          result = await apiGet("card", {
+
+            card: CARD_TOKEN
+
+          });
+
+        } catch (err) {
+
+          continue;
+
+        }
+
+        if (result.ok && result.active) {
+
+          currentCard = result;
+
+          renderClub();
+
+          message.textContent = "";
+
+          return;
+
+        }
+
+        if (result.blocked || result.lost) {
+
+          currentCard = result;
+
+          renderClub();
+
+          return;
+
+        }
+
+      }
+
+      message.textContent =
+        "Activation non confirmée. Rechargez la page pour vérifier votre carte.";
+
+    } catch (err) {
+
+      message.textContent =
+        "Une erreur est survenue. Veuillez réessayer.";
+
+    } finally {
+
+      button.disabled = false;
+
+    }
+
+  }
+);
+
+/* ========================================
+   MODALE PRODUIT
+======================================== */
+
+function fillSizes(select, product) {
+
+  select.innerHTML = "";
+
+  getSizes(product).forEach(taille => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = taille;
+
+    option.textContent = taille;
+
+    select.appendChild(option);
+
+  });
+
+}
+
+function updatePurchaseButtons() {
+
+  const available =
+    currentProduct &&
+    products.some(
+      p => String(p.id) === String(currentProduct.id)
+    );
+
+  $("reservationButton").disabled =
+    !catalogVerified ||
+    !available ||
+    reservationPending;
+
+  $("demoBuyButton").disabled =
+    !catalogVerified || !available;
+
+}
+
+function openProduct(product) {
+
+  currentProduct = product;
+
+  $("modalCategory").textContent =
+    product.categorie || "";
+
+  $("modalName").textContent =
+    product.nom || "";
+
+  $("modalPrice").textContent =
+    product.prix || "";
+
+  $("modalDescription").textContent =
+    product.description || "";
+
+  /*
+    Une seule image est utilisée.
+    Le navigateur réutilise la photo
+    déjà chargée dans la collection.
+  */
+
+  configureImage(
+    $("modalImage"),
+    product
+  );
+
+  $("reservationForm").reset();
+
+  $("reservationProductId").value =
+    product.id;
+
+  fillSizes(
+    $("reservationSize"),
+    product
+  );
+
+  if (currentCard && currentCard.active) {
+
+    $("reservationFirstName").value =
+      currentCard.prenom || "";
+
+  }
+
+  $("reservationMessage").textContent =
+    catalogVerified
+      ? ""
+      : "Vérification du catalogue en cours.";
+
+  updatePurchaseButtons();
+
+  $("productModal").classList.add("open");
+
+  $("productModal")
+    .querySelector(".modal-content")
+    .scrollTop = 0;
+
+  document.body.style.overflow = "hidden";
+
+}
+
+function closeModal() {
+
+  $("productModal").classList.remove("open");
+
+  syncBodyScroll();
+
+}
+
+function syncBodyScroll() {
+
+  document.body.style.overflow =
+    document.querySelector(".modal.open")
+      ? "hidden"
+      : "";
+
+}
+
+/* ========================================
+   RESERVATION 24H
+======================================== */
+
+$("reservationForm").addEventListener(
+  "submit",
+  async e => {
+
+    e.preventDefault();
+
+    if (
+      reservationPending ||
+      !catalogVerified ||
+      !currentProduct
+    ) return;
+
+    const productId =
+      $("reservationProductId").value;
+
+    const product = products.find(
+      p => String(p.id) === String(productId)
+    );
+
+    const message = $("reservationMessage");
+
+    if (!product) {
+
+      message.textContent =
+        "Cet article n'est plus disponible.";
+
+      return;
+
+    }
+
+    const requestId =
+      typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : Date.now() + "-" + Math.random();
+
+    reservationPending = true;
+
+    updatePurchaseButtons();
+
+    message.textContent =
+      "Enregistrement de votre réservation...";
+
+    try {
+
+      apiPost({
+
+        action: "reserve",
+
+        requestId,
+
+        card: CARD_TOKEN,
+
+        produitId: productId,
+
+        taille:
+          $("reservationSize").value,
+
+        prenom:
+          $("reservationFirstName").value.trim(),
+
+        nom:
+          $("reservationLastName").value.trim(),
+
+        telephone:
+          $("reservationPhone").value.trim(),
+
+        email:
+          $("reservationEmail").value.trim(),
+
+        consentement:
+          $("reservationConsent").checked
+            ? "true"
+            : "false"
+
+      });
+
+      for (let i = 0; i < 12; i++) {
+
+        await wait(900);
+
+        let status;
+
+        try {
+
+          status = await apiGet(
+            "reservationStatus",
+            {id: requestId}
+          );
+
+        } catch (err) {
+
+          continue;
+
+        }
+
+        if (status.ok && status.found) {
+
+          message.innerHTML = `
+
+            ✓ Votre demande de réservation
+            a été enregistrée pour 24 h.
+
+            <br><br>
+
+            La boutique pourra vous contacter
+            pour confirmer la disponibilité.
+
+            <br><br>
+
+            Référence :
+            ${escapeHtml(requestId)}
+
+          `;
+
+          return;
+
+        }
+
+      }
+
+      message.textContent =
+        "Réservation non confirmée. Contactez la boutique avant de renouveler votre demande. Référence : " +
+        requestId;
+
+    } catch (err) {
+
+      message.textContent =
+        "Impossible de confirmer la réservation.";
+
+    } finally {
+
+      reservationPending = false;
+
+      updatePurchaseButtons();
+
+    }
+
+  }
+);
+
+/* ========================================
+   PAIEMENT DEMONSTRATION
+======================================== */
+
+$("demoBuyButton").addEventListener(
+  "click",
+  () => {
+
+    if (!currentProduct || !catalogVerified) {
+
+      return;
+
+    }
+
+    openDemoCheckout(currentProduct);
+
+  }
+);
+
+function openDemoCheckout(product) {
+
+  $("demoCheckoutForm").reset();
+
+  $("demoOrderSummary").innerHTML = `
+
+    <div class="demo-summary-row">
+
+      <div>
+
+        <div class="product-category">
+          Votre commande
+        </div>
+
+        <h3>
+          ${escapeHtml(product.nom)}
+        </h3>
+
+      </div>
+
+      <div class="product-price">
+        ${escapeHtml(product.prix)}
+      </div>
+
+    </div>
+
+  `;
+
+  fillSizes(
+    $("demoCheckoutSize"),
+    product
+  );
+
+  const selectedSize =
+    $("reservationSize").value;
+
+  if (
+    getSizes(product).includes(selectedSize)
+  ) {
+
+    $("demoCheckoutSize").value =
+      selectedSize;
+
+  }
+
+  if (currentCard && currentCard.active) {
+
+    $("demoCheckoutFirstName").value =
+      currentCard.prenom || "";
+
+  }
+
+  $("demoCheckoutForm").style.display =
+    "block";
+
+  $("demoPaymentSuccess").style.display =
+    "none";
+
+  $("demoCheckoutModal").classList.add("open");
+
+  $("demoCheckoutModal")
+    .querySelector(".modal-content")
+    .scrollTop = 0;
+
+  syncBodyScroll();
+
+}
+
+function closeDemoCheckout() {
+
+  $("demoCheckoutModal")
+    .classList.remove("open");
+
+  syncBodyScroll();
+
+}
+
+$("demoCheckoutForm").addEventListener(
+  "submit",
+  e => {
+
+    e.preventDefault();
+
+    if (!currentProduct || !catalogVerified) {
+
+      return;
+
+    }
+
+    const available = products.find(
+      p => String(p.id) === String(currentProduct.id)
+    );
+
+    if (!available) {
+
+      alert("Cet article n'est plus disponible.");
+
+      return;
+
+    }
+
+    const prenom =
+      $("demoCheckoutFirstName").value.trim();
+
+    const nom =
+      $("demoCheckoutLastName").value.trim();
+
+    const email =
+      $("demoCheckoutEmail").value.trim();
+
+    const taille =
+      $("demoCheckoutSize").value;
+
+    const delivery =
+      $("demoDeliveryMode").value;
+
+    if (!prenom || !nom || !email) {
+
+      alert("Veuillez compléter vos informations.");
+
+      return;
+
+    }
+
+    const reference =
+      "DEMO-" + Date.now().toString().slice(-8);
+
+    $("demoCheckoutForm").style.display =
+      "none";
+
+    $("demoPaymentSuccess").style.display =
+      "block";
+
+    $("demoOrderReference").innerHTML = `
+
+      <strong>
+        ${escapeHtml(available.nom)}
+      </strong>
+
+      <br>
+
+      Taille : ${escapeHtml(taille)}
+
+      <br>
+
+      ${escapeHtml(delivery)}
+
+      <br><br>
+
+      Référence :
+
+      <strong>
+        ${escapeHtml(reference)}
+      </strong>
+
+      <br><br>
+
+      <span class="gold">
+        MODE DÉMONSTRATION —
+        aucun débit bancaire.
+      </span>
+
+      <br><br>
+
+    `;
+
+  }
+);
+
+/* ========================================
+   FERMETURE DES FENETRES
+======================================== */
+
+$("productModal").addEventListener(
+  "click",
+  e => {
+
+    if (e.target === $("productModal")) {
+
+      closeModal();
+
+    }
+
+  }
+);
+
+$("demoCheckoutModal").addEventListener(
+  "click",
+  e => {
+
+    if (e.target === $("demoCheckoutModal")) {
+
+      closeDemoCheckout();
+
+    }
+
+  }
+);
+
+document.addEventListener(
+  "keydown",
+  e => {
+
+    if (e.key !== "Escape") return;
+
+    if (
+      $("demoCheckoutModal")
+        .classList.contains("open")
+    ) {
+
+      closeDemoCheckout();
+
+    } else {
+
+      closeModal();
+
+    }
+
+  }
+);
+
+/* ========================================
+   ACTUALISATION DU PRODUIT OUVERT
+======================================== */
+
+function refreshCurrentProduct() {
+
+  if (!currentProduct) return;
+
+  const updated = products.find(
+    product =>
+      String(product.id) ===
+      String(currentProduct.id)
+  );
+
+  if (!updated) {
+
+    $("reservationMessage").textContent =
+      "Cet article n'est plus disponible.";
+
+    closeDemoCheckout();
+
+    updatePurchaseButtons();
+
+    return;
+
+  }
+
+  const previousSize =
+    $("reservationSize").value;
+
+  currentProduct = updated;
+
+  $("modalName").textContent =
+    updated.nom || "";
+
+  $("modalCategory").textContent =
+    updated.categorie || "";
+
+  $("modalPrice").textContent =
+    updated.prix || "";
+
+  $("modalDescription").textContent =
+    updated.description || "";
+
+  configureImage(
+    $("modalImage"),
+    updated
+  );
+
+  fillSizes(
+    $("reservationSize"),
+    updated
+  );
+
+  if (
+    getSizes(updated).includes(previousSize)
+  ) {
+
+    $("reservationSize").value =
+      previousSize;
+
+  }
+
+  if (!reservationPending) {
+
+    $("reservationMessage").textContent = "";
+
+  }
+
+  updatePurchaseButtons();
+
+}
+
+/* ========================================
+   DEMARRAGE RAPIDE
+======================================== */
+
+async function init() {
+
+  /*
+    1. Affichage immédiat du cache public.
+    2. Chargement de Google Sheets.
+    3. Actualisation du catalogue.
+    4. Vérification de la carte NFC.
+  */
+
+  const cache = readCatalogCache();
+
+  if (cache) {
+
+    products = cache.products;
+
+    shop = cache.shop || {};
+
+    renderShop();
+
+    renderProducts();
+
+    $("catalogStatus").textContent =
+      "Actualisation de la collection...";
+
+  } else {
+
+    renderSkeleton();
+
+    $("catalogStatus").textContent =
+      "Chargement de la collection...";
+
+  }
+
+  if (CARD_TOKEN) {
+
+    $("publicClubMessage").textContent =
+      "Vérification de votre carte Club...";
+
+  }
+
+  try {
+
+    const data = await apiGet(
+      "bootstrap",
+      {card: CARD_TOKEN}
+    );
+
+    if (!data || !data.ok) {
+
+      throw new Error(
+        data?.error || "Erreur API"
+      );
+
+    }
+
+    shop = data.shop || {};
+
+    products = Array.isArray(data.products)
+      ? data.products
+      : [];
+
+    offers = Array.isArray(data.offers)
+      ? data.offers
+      : [];
+
+    currentCard = data.card || null;
+
+    catalogVerified = true;
+
+    $("catalogStatus").textContent = "";
 
     renderShop();
 
@@ -2102,1332 +3004,60 @@ async function init(){
 
     renderClub();
 
-    initReveal();
+    refreshCurrentProduct();
+
+    saveCatalogCache();
+
+  } catch (err) {
+
+    console.error("EAH API :", err);
+
+    catalogVerified = false;
+
+    if (!cache) {
+
+      $("productsGrid").innerHTML = "";
+
+      catalogSignature = "";
+
+    }
+
+    $("catalogStatus").textContent =
+      cache
+        ? "Catalogue enregistré. Connexion indisponible : achats et réservations temporairement désactivés."
+        : "Impossible de charger la collection. Veuillez réessayer.";
+
+    const retry = document.createElement("button");
+
+    retry.type = "button";
+
+    retry.className = "btn btn-secondary";
+
+    retry.style.margin = "15px";
+
+    retry.textContent = "Réessayer";
+
+    retry.addEventListener("click", () => {
+
+      catalogSignature = "";
+
+      init();
+
+    }, {once:true});
+
+    $("catalogStatus").appendChild(retry);
+
+    renderClub();
+
+    updatePurchaseButtons();
 
   }
 
-  catch(err){
-
-    console.error(err);
-
-    document
-      .getElementById(
-        "heroText"
-      )
-      .textContent =
-      "Impossible de charger la boutique.";
-  }
 }
 
-
-/* ============================================================
-   BOUTIQUE
-============================================================ */
-
-function renderShop(){
-
-  if(
-    shop.HERO_TEXTE
-  ){
-
-    document
-      .getElementById(
-        "heroText"
-      )
-      .textContent =
-      shop.HERO_TEXTE;
-  }
-
-  document
-    .getElementById(
-      "footerAddress"
-    )
-    .textContent =
-    shop.ADRESSE || "";
-
-  document
-    .getElementById(
-      "footerHours"
-    )
-    .textContent =
-    shop.HORAIRES || "";
-
-  const socials = [
-
-    {
-      icon:
-        "fa-brands fa-instagram",
-
-      url:
-        shop.INSTAGRAM
-    },
-
-    {
-      icon:
-        "fa-brands fa-facebook-f",
-
-      url:
-        shop.FACEBOOK
-    },
-
-    {
-      icon:
-        "fa-brands fa-tiktok",
-
-      url:
-        shop.TIKTOK
-    },
-
-    {
-      icon:
-        "fa-brands fa-google",
-
-      url:
-        shop.GOOGLE_AVIS
-    }
-
-  ];
-
-  const container =
-    document
-      .getElementById(
-        "socialLinks"
-      );
-
-  container.innerHTML =
-    "";
-
-  socials.forEach(
-    item => {
-
-      if(!item.url){
-        return;
-      }
-
-      const a =
-        document
-          .createElement(
-            "a"
-          );
-
-      a.className =
-        "social";
-
-      a.href =
-        item.url;
-
-      a.target =
-        "_blank";
-
-      a.rel =
-        "noopener";
-
-      a.innerHTML =
-        `<i class="${item.icon}"></i>`;
-
-      container.appendChild(
-        a
-      );
-    }
-  );
-}
-
-
-/* ============================================================
-   CLUB
-============================================================ */
-
-function renderClub(){
-
-  const publicClub =
-    document
-      .getElementById(
-        "publicClub"
-      );
-
-  const activation =
-    document
-      .getElementById(
-        "activationBox"
-      );
-
-  const member =
-    document
-      .getElementById(
-        "memberArea"
-      );
-
-  publicClub.style.display =
-    "none";
-
-  activation.style.display =
-    "none";
-
-  member.style.display =
-    "none";
-
-
-  if(!CARD_TOKEN){
-
-    publicClub.style.display =
-      "block";
-
-    return;
-  }
-
-
-  if(
-    !currentCard ||
-    !currentCard.exists
-  ){
-
-    publicClub.style.display =
-      "block";
-
-    publicClub.innerHTML =
-      `
-      <div class="member-title">
-      Carte inconnue
-      </div>
-
-      <p>
-      Cette carte n'est pas
-      reconnue par le système.
-      </p>
-      `;
-
-    return;
-  }
-
-if (currentCard.blocked) {
-
-  publicClub.style.display = "block";
-
-  publicClub.innerHTML = `
-    <div class="member-title">
-      Carte désactivée
-    </div>
-
-    <p>
-      Cette carte Club a été désactivée.
-      Veuillez contacter la boutique.
-    </p>
-  `;
-
-  return;
-}
-
-
-if (currentCard.lost) {
-
-  publicClub.style.display = "block";
-
-  publicClub.innerHTML = `
-    <div class="member-title">
-      Carte non valide
-    </div>
-
-    <p>
-      Cette carte Club a été déclarée perdue.
-      Veuillez contacter la boutique.
-    </p>
-  `;
-
-  return;
-}
-  if(
-    !currentCard.active
-  ){
-
-    activation.style.display =
-      "block";
-
-    return;
-  }
-
-
-  member.style.display =
-    "block";
-
-  document
-    .getElementById(
-      "memberHello"
-    )
-    .textContent =
-    "Bonjour " +
-    currentCard.prenom +
-    " 👋";
-
-  document
-    .getElementById(
-      "memberNumber"
-    )
-    .textContent =
-    "Carte Club N°" +
-    currentCard.numero;
-
-
-  const box =
-    document
-      .getElementById(
-        "memberOffers"
-      );
-
-  box.innerHTML =
-    "";
-
-
-  offers.forEach(
-    offer => {
-
-      if(
-        offer.type ===
-        "ANNIVERSAIRE" &&
-        !currentCard.birthdayMonth
-      ){
-        return;
-      }
-
-      const div =
-        document
-          .createElement(
-            "div"
-          );
-
-      div.className =
-        "offer";
-
-      const icon =
-        offer.type ===
-        "ANNIVERSAIRE"
-        ?
-        "fa-gift"
-        :
-        "fa-tag";
-
-      div.innerHTML =
-        `
-        <i class="fa-solid ${icon}">
-        </i>
-
-        <h3>
-        ${escapeHtml(
-          offer.titre
-        )}
-        </h3>
-
-        <p>
-        ${escapeHtml(
-          offer.description
-        )}
-        </p>
-        `;
-
-      box.appendChild(
-        div
-      );
-    }
-  );
-}
-
-
-/* ============================================================
-   ACTIVATION
-============================================================ */
-
-document
-  .getElementById(
-    "activationForm"
-  )
-  .addEventListener(
-    "submit",
-    async e => {
-
-      e.preventDefault();
-
-      const prenom =
-        document
-          .getElementById(
-            "activationPrenom"
-          )
-          .value
-          .trim();
-
-      const anniversaire =
-        document
-          .getElementById(
-            "activationBirthday"
-          )
-          .value
-          .trim();
-
-      const consent =
-        document
-          .getElementById(
-            "activationConsent"
-          )
-          .checked;
-
-
-      if(!consent){
-        return;
-      }
-
-
-      apiPost({
-
-        action:
-          "activate",
-
-        card:
-          CARD_TOKEN,
-
-        prenom,
-
-        anniversaire,
-
-        consentement:
-          "true"
-      });
-
-
-      // On attend que Google Sheets
-      // soit mis à jour.
-      for(
-        let i = 0;
-        i < 12;
-        i++
-      ){
-
-        await wait(700);
-
-        const result =
-          await apiGet(
-            "card",
-            {
-              card:
-                CARD_TOKEN
-            }
-          );
-
-        if(
-          result.active
-        ){
-
-          currentCard =
-            result;
-
-          renderClub();
-
-          return;
-        }
-      }
-
-      alert(
-        "L'activation prend un peu plus de temps. Rechargez la page."
-      );
-
-    }
-  );
-
-
-/* ============================================================
-   PRODUITS
-============================================================ */
-
-function renderProducts(){
-
-  const grid =
-    document
-      .getElementById(
-        "productsGrid"
-      );
-
-  grid.innerHTML =
-    "";
-
-  products.forEach(
-    product => {
-
-      const article =
-        document
-          .createElement(
-            "article"
-          );
-
-      article.className =
-        "product reveal";
-
-      const fallback =
-        placeholderImage(
-          product.nom
-        );
-
-      article.innerHTML =
-        `
-        <div class="product-image">
-
-        <img
-          src="${escapeAttr(
-            product.image
-          )}"
-          alt="${escapeAttr(
-            product.nom
-          )}"
-        >
-
-        <div class="badge">
-        ${escapeHtml(
-          product.badge || ""
-        )}
-        </div>
-
-        </div>
-
-        <div class="product-info">
-
-        <div class="product-category">
-        ${escapeHtml(
-          product.categorie
-        )}
-        </div>
-
-        <div class="product-name">
-        ${escapeHtml(
-          product.nom
-        )}
-        </div>
-
-        <div class="product-price">
-        ${escapeHtml(
-          product.prix
-        )}
-        </div>
-
-        </div>
-        `;
-
-      const img =
-        article.querySelector(
-          "img"
-        );
-
-      img.onerror =
-        () => {
-          img.src =
-            fallback;
-        };
-
-      article.onclick =
-        () =>
-          openProduct(
-            product
-          );
-
-      grid.appendChild(
-        article
-      );
-    }
-  );
-}
-
-
-/* ============================================================
-   MODALE
-============================================================ */
-
-function openProduct(
-  product
-){
-currentProduct = product;
-  document
-    .getElementById(
-      "modalCategory"
-    )
-    .textContent =
-    product.categorie;
-
-  document
-    .getElementById(
-      "modalName"
-    )
-    .textContent =
-    product.nom;
-
-  document
-    .getElementById(
-      "modalPrice"
-    )
-    .textContent =
-    product.prix;
-
-  document
-    .getElementById(
-      "modalDescription"
-    )
-    .textContent =
-    product.description;
-
-
-  const fallback =
-    placeholderImage(
-      product.nom
-    );
-
-  const front =
-    document
-      .getElementById(
-        "modalImageFront"
-      );
-
-  const back =
-    document
-      .getElementById(
-        "modalImageBack"
-      );
-
-  front.src =
-    product.image;
-
-  back.src =
-    product.image;
-
-  front.onerror =
-    () => {
-      front.src =
-        fallback;
-    };
-
-  back.onerror =
-    () => {
-      back.src =
-        fallback;
-    };
-
-
-  document
-    .getElementById(
-      "reservationProductId"
-    )
-    .value =
-    product.id;
-
-
-  const select =
-    document
-      .getElementById(
-        "reservationSize"
-      );
-
-  select.innerHTML =
-    "";
-
-  product.tailles
-    .forEach(
-      taille => {
-
-        const option =
-          document
-            .createElement(
-              "option"
-            );
-
-        option.value =
-          taille;
-
-        option.textContent =
-          taille;
-
-        select.appendChild(
-          option
-        );
-      }
-    );
-
-
-  if(
-    currentCard &&
-    currentCard.active
-  ){
-
-    document
-      .getElementById(
-        "reservationFirstName"
-      )
-      .value =
-      currentCard.prenom || "";
-  }
-
-
-  document
-    .getElementById(
-      "reservationMessage"
-    )
-    .textContent =
-    "";
-
-
-  document
-    .getElementById(
-      "productModal"
-    )
-    .classList
-    .add(
-      "open"
-    );
-
-  document.body.style.overflow =
-    "hidden";
-}
-
-
-function closeModal(){
-
-  document
-    .getElementById(
-      "productModal"
-    )
-    .classList
-    .remove(
-      "open"
-    );
-
-  document.body.style.overflow =
-    "";
-}
-
-
-/* ============================================================
-   RESERVATION
-============================================================ */
-
-document
-  .getElementById(
-    "reservationForm"
-  )
-  .addEventListener(
-    "submit",
-    async e => {
-
-      e.preventDefault();
-
-      const requestId =
-        (
-          crypto.randomUUID
-          ?
-          crypto.randomUUID()
-          :
-          Date.now() +
-          "-" +
-          Math.random()
-        );
-
-
-      apiPost({
-
-        action:
-          "reserve",
-
-        requestId,
-
-        card:
-          CARD_TOKEN,
-
-        produitId:
-          document
-            .getElementById(
-              "reservationProductId"
-            )
-            .value,
-
-        taille:
-          document
-            .getElementById(
-              "reservationSize"
-            )
-            .value,
-
-        prenom:
-          document
-            .getElementById(
-              "reservationFirstName"
-            )
-            .value,
-
-        nom:
-          document
-            .getElementById(
-              "reservationLastName"
-            )
-            .value,
-
-        telephone:
-          document
-            .getElementById(
-              "reservationPhone"
-            )
-            .value,
-email:
-  document
-    .getElementById(
-      "reservationEmail"
-    )
-    .value
-    .trim(),
-        consentement:
-          document
-            .getElementById(
-              "reservationConsent"
-            )
-            .checked
-          ?
-          "true"
-          :
-          "false"
-
-      });
-
-
-      const message =
-        document
-          .getElementById(
-            "reservationMessage"
-          );
-
-      message.textContent =
-        "Enregistrement de votre réservation...";
-
-
-      for(
-        let i = 0;
-        i < 12;
-        i++
-      ){
-
-        await wait(700);
-
-        const status =
-          await apiGet(
-            "reservationStatus",
-            {
-              id:
-                requestId
-            }
-          );
-
-
-        if(
-          status.found
-        ){
-
-          message.innerHTML =
-            `
-            ✅ Votre article est
-            réservé pendant 24 h.
-
-            <br><br>
-
-            La boutique peut vous
-            contacter pour confirmer
-            la disponibilité.
-            `;
-
-          return;
-        }
-      }
-
-
-      message.textContent =
-        "Réservation envoyée. La boutique vous contactera pour confirmation.";
-
-    }
-  );
-
-
-/* ============================================================
-   ANIMATIONS
-============================================================ */
-
-function initReveal(){
-
-  const observer =
-    new IntersectionObserver(
-      entries => {
-
-        entries.forEach(
-          entry => {
-
-            if(
-              entry.isIntersecting
-            ){
-
-              entry.target
-                .classList
-                .add(
-                  "visible"
-                );
-
-              observer
-                .unobserve(
-                  entry.target
-                );
-            }
-          }
-        );
-
-      },
-      {
-        threshold:.12
-      }
-    );
-
-
-  document
-    .querySelectorAll(
-      ".reveal"
-    )
-    .forEach(
-      element =>
-        observer.observe(
-          element
-        )
-    );
-}
-
-
-/* ============================================================
-   OUTILS
-============================================================ */
-
-function wait(ms){
-
-  return new Promise(
-    resolve =>
-      setTimeout(
-        resolve,
-        ms
-      )
-  );
-}
-
-
-function escapeHtml(value){
-
-  return String(
-    value ?? ""
-  )
-  .replaceAll(
-    "&",
-    "&amp;"
-  )
-  .replaceAll(
-    "<",
-    "&lt;"
-  )
-  .replaceAll(
-    ">",
-    "&gt;"
-  )
-  .replaceAll(
-    '"',
-    "&quot;"
-  )
-  .replaceAll(
-    "'",
-    "&#039;"
-  );
-}
-
-
-function escapeAttr(value){
-  return escapeHtml(value);
-}
-
-
-function placeholderImage(
-  name
-){
-
-  const text =
-    escapeHtml(
-      name
-    );
-
-  const svg =
-  `
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="900"
-    height="1200"
-  >
-
-  <defs>
-
-  <linearGradient
-    id="g"
-    x1="0"
-    y1="0"
-    x2="1"
-    y2="1"
-  >
-
-  <stop
-    offset="0"
-    stop-color="#080808"
-  />
-
-  <stop
-    offset="1"
-    stop-color="#31240a"
-  />
-
-  </linearGradient>
-
-  </defs>
-
-  <rect
-    width="100%"
-    height="100%"
-    fill="url(#g)"
-  />
-
-  <text
-    x="50%"
-    y="48%"
-    dominant-baseline="middle"
-    text-anchor="middle"
-    fill="#d5ad4a"
-    font-family="Georgia"
-    font-size="55"
-  >
-  EAH
-  </text>
-
-  <text
-    x="50%"
-    y="55%"
-    dominant-baseline="middle"
-    text-anchor="middle"
-    fill="#f8f5ee"
-    font-family="Arial"
-    font-size="28"
-  >
-  ${text}
-  </text>
-
-  </svg>
-  `;
-
-  return (
-    "data:image/svg+xml;charset=UTF-8," +
-    encodeURIComponent(
-      svg
-    )
-  );
-}
-
-
-/* ============================================================
-   DEMARRAGE
-============================================================ */
-/* ============================================================
-   PAIEMENT DEMONSTRATION
-============================================================ */
-
-document
-  .getElementById("demoBuyButton")
-  .addEventListener(
-    "click",
-    function(){
-
-      if(!currentProduct){
-        return;
-      }
-
-      openDemoCheckout(
-        currentProduct
-      );
-
-    }
-  );
-
-
-function openDemoCheckout(product){
-
-  const modal =
-    document.getElementById(
-      "demoCheckoutModal"
-    );
-
-  const summary =
-    document.getElementById(
-      "demoOrderSummary"
-    );
-
-  const sizeSelect =
-    document.getElementById(
-      "demoCheckoutSize"
-    );
-
-  summary.innerHTML = `
-    <div style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-    ">
-
-      <div>
-
-        <div style="
-          color:#d5ad4a;
-          font-size:12px;
-          letter-spacing:2px;
-          text-transform:uppercase;
-        ">
-          Votre commande
-        </div>
-
-        <h3 style="margin:8px 0;">
-          ${escapeHtml(product.nom)}
-        </h3>
-
-      </div>
-
-      <div style="
-        font-size:22px;
-        color:#f5dc91;
-        font-weight:bold;
-      ">
-        ${escapeHtml(product.prix)}
-      </div>
-
-    </div>
-  `;
-
-
-  sizeSelect.innerHTML = "";
-
-  product.tailles.forEach(
-    taille => {
-
-      const option =
-        document.createElement(
-          "option"
-        );
-
-      option.value =
-        taille;
-
-      option.textContent =
-        taille;
-
-      sizeSelect.appendChild(
-        option
-      );
-
-    }
-  );
-
-
-  if(
-    currentCard &&
-    currentCard.active
-  ){
-
-    document
-      .getElementById(
-        "demoCheckoutFirstName"
-      )
-      .value =
-      currentCard.prenom || "";
-
-  }
-
-
-  document
-    .getElementById(
-      "demoCheckoutForm"
-    )
-    .style.display =
-    "block";
-
-
-  document
-    .getElementById(
-      "demoPaymentSuccess"
-    )
-    .style.display =
-    "none";
-
-
-  modal.classList.add(
-    "open"
-  );
-
-  document.body.style.overflow =
-    "hidden";
-}
-
-
-function closeDemoCheckout(){
-
-  document
-    .getElementById(
-      "demoCheckoutModal"
-    )
-    .classList
-    .remove(
-      "open"
-    );
-
-  document.body.style.overflow =
-    "";
-}
-
-
-/* ============================================================
-   SIMULATION DU PAIEMENT
-============================================================ */
-
-document
-  .getElementById(
-    "demoCheckoutForm"
-  )
-  .addEventListener(
-    "submit",
-    function(e){
-
-      e.preventDefault();
-
-
-      const prenom =
-        document
-          .getElementById(
-            "demoCheckoutFirstName"
-          )
-          .value
-          .trim();
-
-
-      const nom =
-        document
-          .getElementById(
-            "demoCheckoutLastName"
-          )
-          .value
-          .trim();
-
-
-      const email =
-        document
-          .getElementById(
-            "demoCheckoutEmail"
-          )
-          .value
-          .trim();
-
-
-      const taille =
-        document
-          .getElementById(
-            "demoCheckoutSize"
-          )
-          .value;
-
-
-      const delivery =
-        document
-          .getElementById(
-            "demoDeliveryMode"
-          )
-          .value;
-
-
-      if(
-        !prenom ||
-        !nom ||
-        !email
-      ){
-
-        alert(
-          "Veuillez compléter vos informations."
-        );
-
-        return;
-      }
-
-
-      const reference =
-        "DEMO-" +
-        Date.now()
-          .toString()
-          .slice(-8);
-
-
-      document
-        .getElementById(
-          "demoCheckoutForm"
-        )
-        .style.display =
-        "none";
-
-
-      const success =
-        document
-          .getElementById(
-            "demoPaymentSuccess"
-          );
-
-
-      success.style.display =
-        "block";
-
-
-      document
-        .getElementById(
-          "demoOrderReference"
-        )
-        .innerHTML = `
-
-          <strong>
-          ${escapeHtml(
-            currentProduct.nom
-          )}
-          </strong>
-
-          <br>
-
-          Taille :
-          ${escapeHtml(taille)}
-
-          <br>
-
-          ${escapeHtml(delivery)}
-
-          <br><br>
-
-          Référence :
-          <strong>
-          ${reference}
-          </strong>
-
-          <br><br>
-
-          <span style="
-            color:#d5ad4a;
-          ">
-          MODE DÉMONSTRATION —
-          aucun débit bancaire.
-          </span>
-        `;
-
-    }
-  );
 init();
 
 </script>
 
 </body>
-
 </html>
